@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt lịch</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body class="txt bg-pink-sub-bg-login">
+<div class="container pb-5">
+
+    <!-- Logo  -->
+    <div class="row-cols-1">
+        <div class="col text-center">
+            <a href="index.html" class="text-decoration-none">
+                <img src="https://i.imgur.com/WjN1HZX.png" alt="logo & title" class="rect-logo-login my-5"/>
+            </a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="row mb-5">
+
+        <div class="col-lg-3 col-sm-1"></div>
+
+        <!-- reservation form -->
+        <div class="col-lg-6 col-sm-10 rounded bg-white py-3">
+
+            <div class="row border-pink-b px-3">
+                <div class="col text-center">
+                    <p class="txt-bold txt-lgxx txt-pink">Đặt lịch hẹn</p>
+                </div>
+            </div>
+
+            <!-- basic info -->
+            <div class="row mt-2 px-3">
+                <div class="col border-grey-b pb-3">
+                    <p class="txt-bold txt-lgx txt-orange text-center">Thông tin chung</p>
+
+                    <label for="bookerID" class="txt-bold txt-black">Tên người đặt</label>
+                    <br/>
+                    <input type="text" class="rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2"
+                           id="bookerID" placeholder="Nguyễn Văn A"/>
+                    <br/><br/>
+
+                    <label for="bookerPhone" class="txt-bold txt-black">Số điện thoại</label>
+                    <br/>
+                    <input type="tel" class="rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2"
+                           id="bookerPhone" placeholder="0987654321"/>
+                    <br/><br/>
+
+                    <label for="bookedLocation" class="txt-bold txt-black">Nơi đặt lịch</label>
+                    <br/>
+                    <input type="text" class="rounded txt-bold border-grey w-100 bg-grey-sub mt-1 py-1 px-2"
+                           id="bookedLocation" placeholder="Nơi đặt lịch" disabled="disabled" value="THÚ Y PROCARE"/>
+                </div>
+            </div>
+
+            <div class="row mt-2 px-3 border-pink-b pb-3">
+                <div class="col-12">
+                    <p class="txt-bold txt-lgx txt-orange text-center mb-0">Chi tiết</p>
+                </div>
+
+                <!-- service 1 -->
+                <div class="col-12 mt-3" id="service1">
+                    <div class="rounded border-teal">
+
+                        <div class="row border-teal-b align-items-center txt-lg mx-0">
+                            <div class="col-11">
+                                <p class="txt-teal txt-bold mb-0">Dịch vụ 1</p>
+                            </div>
+                            <div class="col-1 btn btn-pink rounded-0" onclick="hideItem('service2')" id="close1"
+                                 style="display: none;">
+                                <i class="bi-x"></i>
+                            </div>
+                        </div>
+
+                        <!-- service booking detail -->
+                        <div class="row align-items-center pb-3 mx-0">
+
+                            <!-- choose service -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Dịch vụ muốn đặt</label>
+                                <select name="serviceChoose"
+                                        class="rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2">
+                                    <option value="service1" selected="selected">Cắt tỉa lông chó Poodle TpHCM</option>
+                                    <option value="service2">Xét nghiệm chó mèo</option>
+                                    <option value="service3">TRIỆT SẢN CHÓ MÈO</option>
+                                </select>
+                            </div>
+
+                            <!-- choose pet -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Bạn đặt cho bé nào</label>
+                                <div class="row mt-1 align-items-center">
+
+                                    <div class="col-6">
+                                        <select name="petChoose"
+                                                class="rounded border-grey w-100 bg-white-sub py-1 px-2">
+                                            <option value="pet1">Mèo - Casper</option>
+                                            <option value="pet2">Chó - Cậu Vàng</option>
+                                            <option value="pet3">Mèo - Mimi</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button class="btn btn-teal w-100">Thêm bé</button>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button class="btn btn-orange w-100">Điền tay</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- book date time -->
+                            <div class="col-12 mt-2">
+                                <div class="row mt-1 align-items-center">
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Ngày hẹn</label>
+                                        <input type="date" name="bookeDate" value="2021-10-05"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Hẹn từ</label>
+                                        <input type="time" name="timeFrom" value="08:00:00"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Hẹn đến</label>
+                                        <input type="time" name="timeTo" value="22:00:00"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- problem -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Ghi chú: </label>
+                                <textarea rows="3" class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1"
+                                          placeholder="Vấn đề của bạn" style="resize: none;"></textarea>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- service 2 -->
+                <div class="col-12 mt-3"  id="service2" style="display: none;">
+                    <div class="rounded border-teal">
+
+                        <div class="row border-teal-b align-items-center txt-lg mx-0">
+                            <div class="col-11">
+                                <p class="txt-teal txt-bold mb-0">Dịch vụ 2</p>
+                            </div>
+                            <div class="col-1 btn btn-pink rounded-0" onclick="hideItem('service2')" id="close2">
+                                <i class="bi-x"></i>
+                            </div>
+                        </div>
+
+                        <!-- service booking detail -->
+                        <div class="row align-items-center pb-3 mx-0">
+
+                            <!-- choose service -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Dịch vụ muốn đặt</label>
+                                <select name="serviceChoose"
+                                        class="rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2">
+                                    <option value="service1">Cắt tỉa lông chó Poodle TpHCM</option>
+                                    <option value="service2" selected="selected">Xét nghiệm chó mèo</option>
+                                    <option value="service3">TRIỆT SẢN CHÓ MÈO</option>
+                                </select>
+                            </div>
+
+                            <!-- choose pet -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Bạn đặt cho bé nào</label>
+                                <div class="row mt-1 align-items-center">
+
+                                    <div class="col-6">
+                                        <select name="petChoose"
+                                                class="rounded border-grey w-100 bg-white-sub py-1 px-2">
+                                            <option value="pet1">Mèo - Casper</option>
+                                            <option value="pet2">Chó - Cậu Vàng</option>
+                                            <option value="pet3">Mèo - Mimi</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button class="btn btn-teal w-100">Thêm bé</button>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <button class="btn btn-orange w-100">Điền tay</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- book date time -->
+                            <div class="col-12 mt-2">
+                                <div class="row mt-1 align-items-center">
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Ngày hẹn</label>
+                                        <input type="date" name="bookeDate" value="2021-10-05"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Hẹn từ</label>
+                                        <input type="time" name="timeFrom" value="08:00:00"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                    <div class="col-4">
+                                        <label class="txt-bold txt-black">Hẹn đến</label>
+                                        <input type="time" name="timeTo" value="22:00:00"
+                                               class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- problem -->
+                            <div class="col-12 mt-2">
+                                <label class="txt-bold txt-black">Ghi chú: </label>
+                                <textarea rows="3" class="rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1"
+                                          placeholder="Vấn đề của bạn" style="resize: none;"></textarea>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <button class="btn btn-teal w-100" onclick="showItem('service2'); showItem('close1')">
+                        Thêm dịch vụ
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="row px-3">
+                <div class="col-12 mt-3">
+                    <a href="datLichThanhCong.html" class="btn btn-pink w-100 txt-bold txt-lg">Gửi đặt lịch</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-sm-1"></div>
+
+</div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+</body>
+</html>

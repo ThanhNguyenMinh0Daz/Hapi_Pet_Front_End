@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Pet</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body class="txt bg-white-sub">
+
+<!-- header -->
+<div class="container-fluid border-grey-b bg-white sticky-top">
+    <div class="row py-2">
+
+        <!-- Logo -->
+        <div class="col-lg-1 col-sm-2 d-flex border-pink-r align-items-center">
+            <a href="index.html" class="text-center w-100">
+                <img src="https://i.imgur.com/WjN1HZX.png" alt="Logo" class="mx-auto w-75 h-auto"/>
+            </a>
+        </div>
+
+        <!-- Nav bar -->
+        <div class="col-lg-11 col-sm-10">
+            <div class="row h-100 d-flex align-items-lg-center">
+
+                <!-- Home, Shop, Service -->
+                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                    <div class="row">
+                        <div class="col border-pink-r py-1">
+                            <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-house-door"></i>
+                                &nbsp; Trang chủ
+                            </a>
+                        </div>
+                        <div class="col border-pink-r btn-group py-1">
+                            <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-basket"></i>
+                                &nbsp; Siêu thị
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-shop-window"></i>
+                                &nbsp; Dịch vụ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forum, Pet blog, My pet -->
+                <div class="col-lg-4 col-sm-12 order-lg-2 order-sm-3">
+                    <div class="row">
+                        <div class="col border-pink-r py-1">
+                            <a href="forum_petOwner/html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-chat-right-text"></i>
+                                &nbsp; Forum
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="petBlog_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-file-richtext"></i>
+                                &nbsp; Pet Blog
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="myPet_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-journals"></i>
+                                &nbsp; My Pet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search, Account, setting -->
+                <div class="col-lg-4 col-sm-12 order-lg-3 order-sm-1">
+                    <div class="row">
+                        <div class="col-2 text-center py-1">
+                            <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
+                        </div>
+
+                        <div class="col-8 dropdown px-0 py-1">
+                            <button type="button" class="btn btn-teal w-100 dropdown-toggle"
+                                    id="btnAccountGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-person-circle"></i>
+                                &nbsp; Nguyễn Thành
+                            </button>
+
+                            <ul class="dropdown-menu w-100 text-end" aria-labelledby="btnAccountGroup">
+                                <li><a class="dropdown-item"
+                                       href="account_petOwner.html">Tài khoản</a></li>
+                                <li><a class="dropdown-item"
+                                       href="cart_petOwner.html">Giỏ hàng</a></li>
+                                <li><a class="dropdown-item"
+                                       href="order_history_petOwner.html">Lịch sử mua hàng</a></li>
+                                <li><a class="dropdown-item"
+                                       href="reservation_history_petOwner.html">Lịch sử đặt lịch</a></li>
+                                <li><a class="dropdown-item"
+                                       href="index_notLogin.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-2 text-center dropdown py-1">
+                            <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle"
+                                    id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-gear"></i>
+                            </button>
+
+                            <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                                <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
+                                <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
+                                <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- breadcrumb -->
+<div class="mx-3 mt-3 rounded bg-white">
+    <div class="container-fluid pt-3 ps-5">
+        <div class="row row-cols-1">
+            <div class="col">
+                <p class="txt-grey txt-bold">
+                    <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                        <i class="bi-house-door"></i>&nbsp; Trang chủ
+                    </a>
+                    &nbsp;/&nbsp;
+                    <a href="#" class="text-decoration-none txt-pink txt-hover-pink">
+                        My Pet
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- content -->
+<div class="mx-3 mt-3 rounded bg-white">
+    <div class="container-fluid txt-black px-5 pb-3">
+
+        <!-- add pet, pet list -->
+        <div class="row mt-3">
+
+            <!-- Add pet -->
+            <div class="col-lg-2 col-sm-4 mt-3">
+                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink bg-white-sub"
+                     onclick="showItem('newPet'); hideItem('petDetail')">
+                    <div class="p-3">
+                        <div class="square-wrapper">
+                            <div class="rounded-circle bg-grey-sub fill-wrapper">
+                                <div class="h-100 row justify-content-center align-items-center">
+                                    <img src="img/images/icon/addPet_white.png" alt="add pet" class="w-50 img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-center txt-bold mt-3">Thêm thú cưng</p>
+                </div>
+            </div>
+
+            <!-- Pet 1 -->
+            <div class="col-lg-2 col-sm-4 mt-3">
+                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
+                     onclick="showItem('petDetail'); hideItem('newPet')">
+                    <div class="square-wrapper">
+                        <div class="fill-wrapper">
+                            <img src="https://i.imgur.com/ofrm7Bu.jpg" alt="pet"
+                                 class="w-100 img-fluid img-cover rounded-top">
+                        </div>
+                    </div>
+
+                    <p class="text-center txt-bold mt-3">Casper</p>
+                </div>
+            </div>
+
+            <!-- Pet 2 -->
+            <div class="col-lg-2 col-sm-4 mt-3">
+                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
+                     onclick="showItem('petDetail'); hideItem('newPet')">
+                    <div class="square-wrapper">
+                        <div class="fill-wrapper">
+                            <img src="https://i.imgur.com/Dq3LvlO.jpg" alt="pet"
+                                 class="w-100 img-fluid img-cover rounded-top">
+                        </div>
+                    </div>
+
+                    <p class="text-center txt-bold mt-3">Cậu Vàng</p>
+                </div>
+            </div>
+
+            <!-- Pet 3 -->
+            <div class="col-lg-2 col-sm-4 mt-3">
+                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
+                     onclick="showItem('petDetail'); hideItem('newPet')">
+                    <div class="square-wrapper">
+                        <div class="fill-wrapper">
+                            <img src="https://i.imgur.com/Q05uWMz.jpg" alt="pet"
+                                 class="w-100 img-fluid img-cover rounded-top">
+                        </div>
+                    </div>
+
+                    <p class="text-center txt-bold mt-3">Mimi</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- New pet -->
+        <div class="row border-grey-sub-t pt-5 mt-5" style="display: none" id="newPet">
+
+            <div class="col-lg-10 col-sm-9">
+                <p class="txt-bold txt-lgx mb-0">Thêm thú cưng</p>
+            </div>
+
+            <div class="col-lg-2 col-sm-3">
+                <button class="btn btn-pink w-100" onclick="hideItem('newPet')">Đóng</button>
+            </div>
+
+            <!-- img -->
+            <div class="col-lg-3 col-sm-5 mt-3">
+                <div class="square-wrapper">
+                    <div class="bg-grey-sub rounded border-pink fill-wrapper">
+                        <div class="h-100 row justify-content-center align-items-center">
+                            <img src="img/images/icon/addPet_white.png" alt="add pet"
+                                 class="w-50 img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- input -->
+            <div class="col-lg-6 col-sm-7 mt-3">
+
+                <!-- name -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="newPetName">Tên:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="newPetName"
+                               placeholder="Boss 123"/>
+                    </div>
+                </div>
+
+                <!-- birthday -->
+                <div class="row align-items-center mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="newPetBirthday">Ngày sinh:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="date" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="newPetBirthday" value="200-01-01"/>
+                    </div>
+                </div>
+
+                <!-- gender -->
+                <div class="row align-items-center py-1 mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold">Giới tính:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="newPetGender" id="newPetGenderUnknown" value="unknown" checked="checked"/>
+                                <label class="" for="newPetGenderUnknown">???</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="newPetGender" id="newPetGenderOther" value="other"/>
+                                <label class="" for="newPetGenderOther">Khác</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="newPetGender" id="newPetGenderMale" value="male"/>
+                                <label class="" for="newPetGenderMale">Đực</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="newPetGender" id="newPetGenderFemale" value="female"/>
+                                <label class="" for="newPetGenderFemale">Cái</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- species, breed -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0 mt-3">
+                        <label class="txt-bold" for="newPetSpecies">Loài:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <select name="newPetSpecies" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                                id="newPetSpecies">
+                            <option value="dog">Chó</option>
+                            <option value="cat">Mèo</option>
+                            <option value="cat">Chim</option>
+                            <option value="cat">Cá</option>
+                            <option value="cat">Chuột</option>
+                            <option value="cat">Thỏ</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-1 col-sm-5 mt-3">
+                        <label class="txt-bold" for="newPetBreed">Giống:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="newPetBreed" placeholder="pug"/>
+                    </div>
+                </div>
+
+                <!-- weight, color -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0 mt-3">
+                        <label class="txt-bold" for="newPetWeight">Cân nặng:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <div class="row align-items-center">
+                            <div class="col-10">
+                                <input type="number" class="w-100 rounded border-grey bg-white-sub text-start py-1 px-2"
+                                       id="newPetWeight" min="0" placeholder="0"/>
+                            </div>
+                            <div class="col-2 px-0">Kg</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1 col-sm-5 mt-3">
+                        <label class="txt-bold" for="newPetColor">Màu:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="newPetColor" placeholder="vàng"/>
+                    </div>
+                </div>
+
+                <!-- chip -->
+                <div class="row align-items-center mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="newPetChip">Số chip (nếu có):</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="newPetChip"
+                               placeholder="xxxx - xxxx - xxxx"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100"><!-- break --></div>
+
+            <div class="col-6 mt-3">
+                <button class="btn btn-pink txt-bold w-100" onclick="hideItem('newPet')">Hủy</button>
+            </div>
+
+            <div class="col-6 mt-3">
+                <button class="btn btn-teal txt-bold w-100" onclick="hideItem('newPet')">Lưu</button>
+            </div>
+
+        </div>
+
+        <!-- Pet detail -->
+        <div class="row border-grey-sub-t pt-5 mt-5" style="display: none" id="petDetail">
+
+            <div class="col-lg-10 col-sm-9">
+                <p class="txt-bold txt-lgx mb-0">Chi tiết</p>
+            </div>
+
+            <div class="col-lg-2 col-sm-3">
+                <button class="btn btn-pink w-100" onclick="hideItem('petDetail')">Đóng</button>
+            </div>
+
+            <!-- img -->
+            <div class="col-lg-3 col-sm-5 mt-3">
+                <div class="square-wrapper">
+                    <div class="rounded border-pink fill-wrapper">
+                        <div class="h-100 row justify-content-center align-items-center">
+                            <img src="https://i.imgur.com/ofrm7Bu.jpg" alt="add pet"
+                                 class="w-100 img-fluid img-cover rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- input -->
+            <div class="col-lg-6 col-sm-7 mt-3">
+
+                <!-- name -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="petName">Tên:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petName"
+                               value="Casper"/>
+                    </div>
+                </div>
+
+                <!-- birthday -->
+                <div class="row align-items-center mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="petBirthday">Ngày sinh:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="date" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="petBirthday" value="2019-04-03"/>
+                    </div>
+                </div>
+
+                <!-- gender -->
+                <div class="row align-items-center py-1 mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold">Giới tính:</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="petGender" id="petGenderUnknown" value="unknown"/>
+                                <label class="" for="petGenderUnknown">???</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="petGender" id="petGenderOther" value="other"/>
+                                <label class="" for="petGenderOther">Khác</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="petGender" id="petGenderMale" value="male" checked="checked"/>
+                                <label class="" for="petGenderMale">Đực</label>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-6">
+                                <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
+                                       name="newPetGender" id="petGenderFemale" value="female"/>
+                                <label class="" for="petGenderFemale">Cái</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- species, breed -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0 mt-3">
+                        <label class="txt-bold" for="petSpecies">Loài:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <select name="newPetSpecies" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                                id="petSpecies">
+                            <option value="dog">Chó</option>
+                            <option value="cat" selected="selected">Mèo</option>
+                            <option value="cat">Chim</option>
+                            <option value="cat">Cá</option>
+                            <option value="cat">Chuột</option>
+                            <option value="cat">Thỏ</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-1 col-sm-5 mt-3">
+                        <label class="txt-bold" for="petBreed">Giống:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="petBreed" value="vàng"/>
+                    </div>
+                </div>
+
+                <!-- weight, color -->
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0 mt-3">
+                        <label class="txt-bold" for="petWeight">Cân nặng:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <div class="row align-items-center">
+                            <div class="col-10">
+                                <input type="number" class="w-100 rounded border-grey bg-white-sub text-start py-1 px-2"
+                                       id="petWeight" min="0" value="12"/>
+                            </div>
+                            <div class="col-2 px-0">Kg</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1 col-sm-5 mt-3">
+                        <label class="txt-bold" for="petColor">Màu:</label>
+                    </div>
+                    <div class="col-lg-4 col-sm-7 mt-3">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="petColor" value="vàng - trắng"/>
+                    </div>
+                </div>
+
+                <!-- chip -->
+                <div class="row align-items-center mt-3">
+                    <div class="col-lg-3 col-sm-5 pe-3 ps-0">
+                        <label class="txt-bold" for="petChip">Số chip (nếu có):</label>
+                    </div>
+                    <div class="col-lg-9 col-sm-7">
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petChip"
+                               value="1234-5678-4242"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100"><!-- break --></div>
+
+            <div class="col-4 mt-3">
+                <button class="btn btn-pink txt-bold w-100" onclick="hideItem('petDetail')">Hủy</button>
+            </div>
+
+            <div class="col-4 mt-3">
+                <button class="btn btn-pink-sub border-pink txt-bold w-100" onclick="hideItem('petDetail')">Xóa</button>
+            </div>
+
+            <div class="col-4 mt-3">
+                <button class="btn btn-teal txt-bold w-100" onclick="hideItem('petDetail')">Lưu</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- footer -->
+<div class="container-fluid border-grey-t bg-footer-img mt-3">
+    <div class="row row-cols-1 px-lg-5 px-sm-3 mx-lg-5 mx-sm-4">
+
+        <div class="col-lg-3 col-sm-6 order-lg-1 order-sm-2 py-3 ps-lg-5 ps-sm-3 mt-3">
+            <p class="txt-bolder txt-lgx txt-pink mb-4">Về chúng tôi</p>
+
+            <p><a href="gioithieu.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Giới thiệu Hapi Pet</a>
+            </p>
+
+            <p><a href="tuyendung.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Tuyển dụng nhân sự</a>
+            </p>
+
+            <p><a href="become_partner.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Trở thành đối tác</a>
+            </p>
+
+            <p><a href="chinhsach.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Chính sách thanh toán</a>
+            </p>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 order-lg-2 order-sm-1 py-3 mt-3">
+            <p class="mt-lg-4 mt-sm-0 mb-0">
+                Hapi Pet mang đến cho người dùng một cộng đồng những người yêu thích thú cưng. Ở đây các bạn có thể nhận
+                được dịch vụ chăm sóc tốt nhất và cùng nhau chia sẻ những khoảnh khắc đáng nhớ về thú cưng của mình.
+            </p>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 order-lg-3 order-sm-3 py-3 ps-lg-4 ps-sm-3 mt-3">
+            <p class="txt-bolder txt-lgx txt-pink mb-4">Liên hệ</p>
+
+            <p><a href="#"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Công ty Tâm Huyết Việt</a>
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-geo-alt txt-pink"></i>
+                &nbsp; Trần Hưng Đạo, Q1, Tp HCM
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-telephone txt-pink"></i>
+                &nbsp; 090 6979 xxx
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-envelope txt-pink"></i>
+                &nbsp; hapipet@gmail.com
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row bg-grey px-5 py-2">
+        <p class="txt-bold txt-white mb-0">&copy;&nbsp; 2021&nbsp; Design by &nbsp;
+            <a href="#" class="text-decoration-none txt-white txt-hover-orange">Nguyen Thanh</a>,
+            <a href="#" class="text-decoration-none txt-white txt-hover-teal">Do Nam</a>,
+            <a href="#" class="text-decoration-none txt-white txt-hover-yellow">Nguyen Tam</a>
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.esm.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

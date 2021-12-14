@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body class="txt bg-pink-sub-bg-login">
+<div class="container pb-5">
+
+    <!-- Logo & splash img -->
+    <div class="row-cols-1">
+        <div class="col text-center">
+            <a href="index_notLogin.html" class="text-decoration-none">
+                <img src="https://i.imgur.com/WjN1HZX.png" alt="logo & title" class="rect-logo-login my-5"/>
+            </a>
+            <br/>
+            <img src="img/splash_owner_3.png" alt="logo & title" class="rect-owner-login"/>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="row mb-5">
+        <div class="col-lg-3 col-sm-1"></div>
+
+        <!-- Login form -->
+        <div class="col-lg-6 col-sm-10 rounded bg-white py-3">
+
+            <div class="row border-pink-b px-3">
+                <div class="col text-center">
+                    <p class="txt-bold txt-lgxx txt-pink">Đăng nhập</p>
+                </div>
+            </div>
+
+            <div class="row mt-4 px-3">
+                <div class="col text-center">
+                    <a href="index.html" class="btn btn-danger txt-bold txt-sm w-100">
+                        <i class="bi-google txt-md"> </i>
+                        &nbsp; Google
+                    </a>
+                </div>
+                <div class="col text-center">
+                    <a href="index.html" class="btn btn-blue-facebook txt-bold txt-sm w-100">
+                        <i class="bi-facebook txt-md"> </i>
+                        &nbsp; Facebook
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-4 px-3">
+                <div class="col text-center">
+                    <p class="txt-grey">
+                        <i class="txt-line-through">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                        &nbsp; Hoặc &nbsp;
+                        <i class="txt-line-through">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 mb-3 px-3">
+                <div class="col">
+                    <label for="txtPhoneNum" class="txt-bold txt-black">Số điện thoại</label>
+                    <br/>
+                    <input type="tel" minlength="10" maxlength="16" id="txtPhoneNum" name="txtPhoneNum"
+                           pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im"
+                           placeholder="0987654321" class="rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2"/>
+                    <br/>
+
+                    <button class="btn btn-pink w-100 mt-3" id="btnSendOTP"
+                            onclick="ajaxSendOtp()">
+                        Gửi mã OTP
+                    </button>
+
+                    <div class="text-center mt-1" id="linkSendOTP" style="display: none;">
+                        <a href="#" class="txt-blue" onclick="ajaxSendOtp()">Gửi lại mã OTP</a>
+                    </div>
+                </div>
+
+                <div class="col mt-2" id="formOTP" style="display: none;">
+                    <label class="txt-bold txt-black">Mã OTP</label>
+                    <br/>
+                    <div class="row mt-1">
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum1"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum2"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum3"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum4"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum5"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" min="0" max="9" maxlength="1" id="otpNum6"
+                                   class="text-center rounded border-grey w-100 bg-white-sub py-1 px-2"/>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-pink w-100 mt-3" id="btnLoginOTP" onclick="ajaxLoginPhone()">Đăng nhập</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-sm-1"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxLogin.js"></script>
+</body>
+</html>

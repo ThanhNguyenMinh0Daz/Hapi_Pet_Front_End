@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body class="txt bg-white-sub" onload="fillServiceShopDetail(window.location.search)">
+
+<!-- header -->
+<div class="container-fluid border-grey-b bg-white sticky-top">
+    <div class="row py-2">
+
+        <!-- Logo -->
+        <div class="col-lg-1 col-sm-2 d-flex border-pink-r align-items-center">
+            <a href="index.html" class="text-center w-100">
+                <img src="https://i.imgur.com/WjN1HZX.png" alt="Logo" class="mx-auto w-75 h-auto"/>
+            </a>
+        </div>
+
+        <!-- Nav bar -->
+        <div class="col-lg-11 col-sm-10">
+            <div class="row h-100 d-flex align-items-lg-center">
+
+                <!-- Home, Shop, Service -->
+                <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                    <div class="row">
+                        <div class="col border-pink-r py-1">
+                            <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-house-door"></i>
+                                &nbsp; Trang chủ
+                            </a>
+                        </div>
+                        <div class="col border-pink-r btn-group py-1">
+                            <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-basket"></i>
+                                &nbsp; Siêu thị
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-shop-window"></i>
+                                &nbsp; Dịch vụ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forum, Pet blog, My pet -->
+                <div class="col-lg-4 col-sm-12 order-lg-2 order-sm-3">
+                    <div class="row">
+                        <div class="col border-pink-r py-1">
+                            <a href="forum_petOwner/html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-chat-right-text"></i>
+                                &nbsp; Forum
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="petBlog_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-file-richtext"></i>
+                                &nbsp; Pet Blog
+                            </a>
+                        </div>
+                        <div class="col border-pink-r py-1">
+                            <a href="myPet_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                <i class="bi-journals"></i>
+                                &nbsp; My Pet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search, Account, setting -->
+                <div class="col-lg-4 col-sm-12 order-lg-3 order-sm-1">
+                    <div class="row">
+                        <div class="col-2 text-center py-1">
+                            <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
+                        </div>
+
+                        <div class="col-8 dropdown px-0 py-1">
+                            <button type="button" class="btn btn-teal w-100 dropdown-toggle"
+                                    id="btnAccountGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-person-circle"></i>
+                                &nbsp; Nguyễn Thành
+                            </button>
+
+                            <ul class="dropdown-menu w-100 text-end" aria-labelledby="btnAccountGroup">
+                                <li><a class="dropdown-item"
+                                       href="account_petOwner.html">Tài khoản</a></li>
+                                <li><a class="dropdown-item"
+                                       href="cart_petOwner.html">Giỏ hàng</a></li>
+                                <li><a class="dropdown-item"
+                                       href="order_history_petOwner.html">Lịch sử mua hàng</a></li>
+                                <li><a class="dropdown-item"
+                                       href="reservation_history_petOwner.html">Lịch sử đặt lịch</a></li>
+                                <li><a class="dropdown-item"
+                                       href="index_notLogin.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-2 text-center dropdown py-1">
+                            <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle"
+                                    id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-gear"></i>
+                            </button>
+
+                            <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                                <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
+                                <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
+                                <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- breadcrumb -->
+<div class="mx-3 mt-3 rounded bg-white">
+    <div class="container-fluid pt-3 ps-5">
+        <div class="row row-cols-1">
+            <div class="col">
+                <p class="txt-grey txt-bold">
+                    <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                        <i class="bi-house-door"></i>&nbsp; Trang chủ
+                    </a>
+                    &nbsp;/&nbsp;
+                    <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                        Dịch vụ
+                    </a>
+                    &nbsp;/&nbsp;
+                    <a href="serviceShop_detail.html" class="text-decoration-none txt-pink txt-hover-pink">
+                        Chi tiết
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- content -->
+<div class="mx-3 mt-3 rounded bg-white">
+    <div class="container-fluid px-5 pb-3">
+
+        <!-- shop info -->
+        <div class="row border-grey-sub-b pt-4 pb-3">
+
+            <!-- shop img -->
+            <div class="col-lg-6 col-sm-12 mt-3">
+                <!-- current img -->
+                <div class="rect-wrapper-3w-by-2h rounded border-orange">
+                    <div class="fill-wrapper text-center">
+                        <img src="" alt="img" id="serviceShopCurrentImg" class="w-100 h-100 img-contain rounded"/>
+                    </div>
+                </div>
+
+                <!-- img list -->
+                <div class="row flex-row flex-nowrap overflow-auto rounded border-orange mx-0 mt-3"
+                     id="serviceShopImgList"></div>
+            </div>
+
+            <!-- shop detail -->
+            <div class="col-lg-6 col-sm-12 txt txt-black mt-3">
+                <p class="txt-bold txt-lgx" id="serviceShopName"></p>
+
+                <p class="txt-sm txt-pink" id="serviceShopStar"></p>
+
+                <p class="" id="serviceShopAddress">Địa Chỉ: </p>
+
+                <p class="" id="serviceShopWorktime">Giờ mở cửa: </p>
+
+                <p class="" id="serviceShopPhone">Điện thoại: </p>
+
+                <p class="" id="serviceShopWeb">Website: </p>
+
+                <div class="row txt-bold border-grey-sub-y py-3 mb-3" id="serviceShopServiceOffer"></div>
+
+                <p class="txt-bold mb-1">Giới thiệu: </p>
+                <p class="" id="serviceShopDesc"></p>
+            </div>
+
+        </div>
+
+        <!-- shop service & review-->
+        <div class="row row-cols-1">
+
+            <!-- tabs -->
+            <div class="col-12 mt-3">
+                <div class="row m-0">
+                    <div class="col-lg-3 col-sm-6 p-0"
+                         onclick="hideItem('serviceShopReviewTab'); showItem('serviceShopServiceTab')">
+                        <button class="btn rounded-0 btn-pink w-100 txt-bold" id="serviceShopServices">
+                            Dịch vụ
+                        </button>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 p-0"
+                         onclick="showItem('serviceShopReviewTab'); hideItem('serviceShopServiceTab')">
+                        <button class="btn rounded-0 btn-pink-sub border-pink w-100 txt-bold" id="serviceShopReviews"
+                                onclick="btnPinkToggle('serviceShopServices','serviceShopReviews')">
+                            Đánh giá
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- tab detail -->
+            <div class="col-12">
+                <div class="container-fluid bg-white-sub px-0 pb-3">
+
+                    <!-- service tab -->
+                    <div class="row m-0" id="serviceShopServiceTab">
+
+                        <div class="w-100 mt-3"></div>
+
+                        <div class="col-4">
+                            <button class="btn btn-pink w-100" onclick="unselectAllService()">Bỏ chọn</button>
+                        </div>
+
+                        <div class="col-4">
+                            <button class="btn btn-orange w-100" onclick="selectAllService()">Chọn tất cả</button>
+                        </div>
+
+                    </div>
+
+                    <!-- review tab -->
+                    <div class="row m-0" id="serviceShopReviewTab" style="display: none">
+
+                        <div class="col-lg-2 col-sm-6 mt-3">
+                            <button class="btn btn-pink w-100" onclick="toggleItem('newReview')">
+                                <i class="bi-pencil"></i>&nbsp; Viết đánh giá
+                            </button>
+                        </div>
+
+                        <!-- new review form -->
+                        <div class="col-12 mt-3" id="newReview" style="display: none;">
+                                <div class="row h-100 bg-white rounded border-pink align-items-center justify-content-center px-lg-5 px-sm-0 pb-3 m-0">
+                                    <p class="txt-bold txt-lgx text-center my-3">Thêm đánh giá</p>
+
+                                    <div class="col-lg-2 col-sm-3">
+                                        <label for="newReviewBy" class="txt-bold mb-1">Bởi: </label>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-9">
+                                        <input type="text" maxlength="50" id="newReviewBy" placeholder="Nguyễn Văn A"
+                                               class="w-100 rounded border-grey bg-white-sub py-1 px-2 mb-1">
+                                    </div>
+
+                                    <div class="w-100"></div>
+
+                                    <div class="col-lg-2 col-sm-3 mt-1">
+                                        <label for="newReviewStar" class="txt-bold mb-1">Đánh giá: </label>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-9 mt-1">
+                                        <div class="row align-items-center">
+                                            <div class="col-11">
+                                                <input type="number" min="0.0" max="5.0" id="newReviewStar"
+                                                       placeholder="0.0"
+                                                       class="w-100 rounded border-grey bg-white-sub py-1 px-2 mb-1">
+                                            </div>
+                                            <div class="col-1 px-0"><i class="bi-star-fill txt-pink txt-lg"></i></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-100"></div>
+
+                                    <div class="col-lg-6 col-sm-12 mt-2">
+                                        <label for="newReviewReview" class="txt-bold mb-1">Nội dung: </label>
+                                        <textarea id="newReviewReview" rows="3" placeholder="Phục vụ tốt"
+                                                  class="w-100 rounded border-grey bg-white-sub py-1 px-2 mb-0"></textarea>
+                                    </div>
+
+                                    <div class="w-100"></div>
+
+                                    <div class="col-lg-3 col-sm-6 mt-3">
+                                        <button class="btn btn-pink w-100" onclick="hideItem('newReview')">Hủy</button>
+                                    </div>
+
+                                    <div class="col-lg-3 col-sm-6 mt-3">
+                                        <button class="btn btn-blue w-100" onclick="hideItem('newReview')">Gửi</button>
+                                    </div>
+
+                                </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- footer -->
+<div class="container-fluid border-grey-t bg-pink-sub-bg-login bg-footer-img mt-3">
+    <div class="row row-cols-1 px-lg-5 px-sm-3 mx-lg-5 mx-sm-4">
+
+        <div class="col-lg-3 col-sm-6 order-lg-1 order-sm-2 py-3 ps-lg-5 ps-sm-3 mt-3">
+            <p class="txt-bolder txt-lgx txt-pink mb-4">Về chúng tôi</p>
+
+            <p><a href="gioithieu.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Giới thiệu Hapi Pet</a>
+            </p>
+
+            <p><a href="tuyendung.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Tuyển dụng nhân sự</a>
+            </p>
+
+            <p><a href="become_partner.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Trở thành đối tác</a>
+            </p>
+
+            <p><a href="chinhsach.html"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Chính sách thanh toán</a>
+            </p>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 order-lg-2 order-sm-1 py-3 mt-3">
+            <p class="mt-lg-4 mt-sm-0 mb-0">
+                Hapi Pet mang đến cho người dùng một cộng đồng những người yêu thích thú cưng. Ở đây các bạn có thể nhận
+                được dịch vụ chăm sóc tốt nhất và cùng nhau chia sẻ những khoảnh khắc đáng nhớ về thú cưng của mình.
+            </p>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 order-lg-3 order-sm-3 py-3 ps-lg-4 ps-sm-3 mt-3">
+            <p class="txt-bolder txt-lgx txt-pink mb-4">Liên hệ</p>
+
+            <p><a href="#"
+                  class="text-decoration-none txt-bold txt-black txt-hover-pink">Công ty Tâm Huyết Việt</a>
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-geo-alt txt-pink"></i>
+                &nbsp; Trần Hưng Đạo, Q1, Tp HCM
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-telephone txt-pink"></i>
+                &nbsp; 090 6979 xxx
+            </p>
+
+            <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                <i class="bi-envelope txt-pink"></i>
+                &nbsp; hapipet@gmail.com
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row bg-grey px-5 py-2">
+        <p class="txt-bold txt-white mb-0">&copy;&nbsp; 2021&nbsp; Design by &nbsp;
+            <a href="#" class="text-decoration-none txt-white txt-hover-orange">Nguyen Thanh</a>,
+            <a href="#" class="text-decoration-none txt-white txt-hover-teal">Do Nam</a>,
+            <a href="#" class="text-decoration-none txt-white txt-hover-yellow">Nguyen Tam</a>
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxServiceShop.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.esm.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

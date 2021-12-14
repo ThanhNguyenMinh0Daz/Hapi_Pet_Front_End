@@ -1,0 +1,864 @@
+/*
+Luật thêm style:
+    Màu chỉ dùng var cho sẵn (theo behance), dùng hàm var(--Màu)
+    Kích thước dùng rem NOT px
+    Hạn chế chồng nhau (NOT div header span p {}), để tách rời nhau
+    Không dùng !important.
+    1 class ít style, bù = dùng nhiều class
+    Học bootstrap, cái gì có rồi dùng, đỡ làm lại cái có sẵn
+    Chỉ nên bổ trợ cho bootstrap
+
+Luật dùng style:
+    BẮT BUỘC dùng class .txt thẻ body mọi trang
+*/
+/* ==================== IMPORT ====================================================================================== */
+/* ========== bootstrap ========== */
+@import "bootstrap.css";
+@import "bootstrap.rtl.css";
+@import "bootstrap-grid.css";
+@import "bootstrap-grid.rtl.css";
+@import "bootstrap-reboot.css";
+@import "bootstrap-reboot.rtl.css";
+@import "bootstrap-utilities.css";
+@import "bootstrap-utilities.rtl.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
+/* ========== bootstrap ========== */
+/* ========== font ========== */
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+/* ========== font ========== */
+
+/* ==================== IMPORT ====================================================================================== */
+
+
+/* ==================== VARIABLE =====================================================================================*/
+
+:root {
+    --shadow: #969696;
+
+    --white: #FFFFFF;
+    --white-sub: #F2F2F2;
+    --grey: #828282;
+    --grey-sub: #BDBDBD;
+    --black: #333333;
+
+    --pink: #FF6262;
+    --pink-btn-hover: #FF3333; /*dark 9%*/
+    --pink-sub: #FFEFEF;
+    --pink-sub-btn-hover: #FF6262; /*equal pink*/
+    --orange: #FF8015;
+    --orange-btn-hover: #FF7300; /*dark 4%*/
+    --yellow: #FFC71C;
+    --yellow-btn-hover: #ffbf00; /*dark 5%*/
+    --teal: #17D0BC;
+    --teal-btn-hover: #14B8A7; /*dark 5%*/
+    --blue: #44BAF1;
+    --blue-btn-hover: #12A8ED; /*dark 11%*/
+
+    --pink-sub-bg-login: #FDEBF2;
+
+    --blue-facebook: #3B5998;
+    --blue-facebook-btn-hover: #324b81; /*dark 6%*/
+}
+
+/* ==================== VARIABLE =====================================================================================*/
+
+
+/* ==================== TEXT ======================================================================================== */
+
+/* ========== font ========== */
+.txt {
+    font-family: Manrope, sans-serif !important; /*Manrope inherit sans-serif => sans-serif as fallback*/
+}
+
+/* ========== font ========== */
+
+/* ========== style ========== */
+.txt-hover-bold {
+}
+
+.txt-hover-bold:hover, .txt-bold {
+    font-weight: bold;
+}
+
+.txt-hover-bolder {
+}
+
+.txt-hover-bolder:hover, .txt-bolder {
+    font-weight: bolder;
+}
+
+.txt-hover-normal {
+}
+
+.txt-hover-normal:hover, .txt-normal {
+    font-weight: normal;
+}
+
+.txt-hover-lighter {
+}
+
+.txt-hover-lighter:hover, .txt-lighter {
+    font-weight: lighter;
+}
+
+.txt-hover-italic {
+}
+
+.txt-hover-italic:hover, .txt-italic {
+    font-style: italic;
+}
+
+.txt-hover-underline {
+}
+
+.txt-hover-underline:hover, .txt-underline {
+    text-decoration: underline;
+}
+
+.txt-hover-overline {
+}
+
+.txt-hover-overline:hover, .txt-overline {
+    text-decoration: overline;
+}
+
+.txt-hover-underline-overline {
+}
+
+.txt-hover-underline-overline:hover, .txt-underline-overline {
+    text-decoration: underline overline;
+}
+
+.txt-hover-line-through {
+}
+
+.txt-hover-line-through:hover, .txt-line-through {
+    text-decoration: line-through;
+}
+
+.txt-hover-shadow {
+}
+
+.txt-hover-shadow:hover, .txt-shadow {
+    text-shadow: 1px 1px 0px var(--shadow);
+}
+
+/* ========== style ========== */
+
+/* ========== color ========== */
+.txt-hover-white {
+}
+
+.txt-hover-white:hover, .txt-white {
+    color: var(--white);
+}
+
+.txt-hover-white-sub {
+}
+
+.txt-hover-white-sub:hover, .txt-white-sub {
+    color: var(--white-sub);
+}
+
+.txt-hover-grey {
+}
+
+.txt-hover-grey:hover, .txt-grey {
+    color: var(--grey);
+}
+
+.txt-hover-grey-sub {
+}
+
+.txt-hover-grey-sub:hover, .txt-grey-sub {
+    color: var(--grey-sub);
+}
+
+.txt-hover-black {
+}
+
+.txt-hover-black:hover, .txt-black {
+    color: var(--black);
+}
+
+.txt-hover-pink {
+}
+
+.txt-hover-pink:hover, .txt-pink {
+    color: var(--pink);
+}
+
+.txt-hover-pink-sub {
+}
+
+.txt-hover-pink-sub:hover, .txt-pink-sub {
+    color: var(--pink-sub);
+}
+
+.txt-hover-orange {
+}
+
+.txt-hover-orange:hover, .txt-orange {
+    color: var(--orange);
+}
+
+.txt-hover-yellow {
+}
+
+.txt-hover-yellow:hover, .txt-yellow {
+    color: var(--yellow);
+}
+
+.txt-hover-teal {
+}
+
+.txt-hover-teal:hover, .txt-teal {
+    color: var(--teal);
+}
+
+.txt-hover-blue {
+}
+
+.txt-hover-blue:hover, .txt-blue {
+    color: var(--blue);
+}
+
+/* ========== color ========== */
+
+/* ========== size ========== */
+.txt-smxx {
+    font-size: xx-small;
+}
+
+.txt-smx {
+    font-size: x-small;
+}
+
+.txt-smr {
+    font-size: smaller;
+}
+
+.txt-sm {
+    font-size: small;
+}
+
+.txt-md {
+    font-size: medium;
+}
+
+.txt-lg {
+    font-size: large;
+}
+
+.txt-lgr {
+    font-size: larger;
+}
+
+.txt-lgx {
+    font-size: x-large;
+}
+
+.txt-lgxx {
+    font-size: xx-large;
+}
+
+/* ========== size ========== */
+
+/* ==================== TEXT ======================================================================================== */
+
+
+/* ==================== BUTTON ====================================================================================== */
+
+
+.btn-white-sub {
+    background-color: var(--white-sub);
+    color: var(--black);
+}
+
+.btn-white-sub:hover, .btn-white-sub:focus {
+    background-color: var(--grey-sub);
+    color: var(--black);
+}
+
+.btn-pink {
+    background-color: var(--pink);
+    color: var(--white);
+}
+
+.btn-pink:hover, .btn-pink:focus {
+    background-color: var(--pink-btn-hover);
+    color: var(--white);
+}
+
+.btn-pink-sub {
+    background-color: var(--pink-sub);
+    color: var(--pink);
+}
+
+.btn-pink-sub:hover, .btn-pink-sub:focus {
+    background-color: var(--pink-sub-btn-hover);
+    color: var(--white);
+}
+
+.btn-orange {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.btn-orange:hover, .btn-orange:focus {
+    background-color: var(--orange-btn-hover);
+    color: var(--white);
+}
+
+.btn-yellow {
+    background-color: var(--yellow);
+    color: var(--white);
+}
+
+.btn-yellow:hover, .btn-yellow:focus {
+    background-color: var(--yellow-btn-hover);
+    color: var(--white);
+}
+
+.btn-teal {
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.btn-teal:hover, .btn-teal:focus {
+    background-color: var(--teal-btn-hover);
+    color: var(--white);
+}
+
+.btn-blue {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-blue:hover, .btn-blue-selected {
+    background-color: var(--blue-btn-hover);
+    color: var(--white);
+}
+
+
+.btn-blue-facebook {
+    background-color: var(--blue-facebook);
+    color: var(--white);
+}
+
+.btn-blue-facebook:hover, .btn-blue-facebook-selected {
+    background-color: var(--blue-facebook-btn-hover);
+    color: var(--white);
+}
+
+/* ==================== BUTTON ====================================================================================== */
+
+
+/* ==================== BACKGROUND ================================================================================== */
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-white-sub {
+    background-color: var(--white-sub);
+}
+
+.bg-grey {
+    background-color: var(--grey);
+}
+
+.bg-grey-sub {
+    background-color: var(--grey-sub);
+}
+
+.bg-black {
+    background-color: var(--black);
+}
+
+.bg-pink {
+    background-color: var(--pink);
+}
+
+.bg-pink-sub {
+    background-color: var(--pink-sub);
+}
+
+.bg-orange {
+    background-color: var(--orange);
+}
+
+.bg-yellow {
+    background-color: var(--yellow);
+}
+
+.bg-teal {
+    background-color: var(--teal);
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-pink-sub-bg-login {
+    background-color: var(--pink-sub-bg-login);
+}
+
+.bg-footer-img {
+    background-image: url("https://i.imgur.com/IolBwzT.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* ==================== BACKGROUND ================================================================================== */
+
+
+/* ==================== BORDER ====================================================================================== */
+
+.border-hover-shadow {}
+.border-hover-shadow:hover, .border-shadow {
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+}
+
+.border-white {
+    border: 1px solid var(--white);
+}
+
+.border-white-x {
+    border-left: 1px solid var(--white);
+    border-right: 1px solid var(--white);
+}
+
+.border-white-y {
+    border-top: 1px solid var(--white);
+    border-bottom: 1px solid var(--white);
+}
+
+.border-white-l {
+    border-left: 1px solid var(--white);
+}
+
+.border-white-r {
+    border-right: 1px solid var(--white);
+}
+
+.border-white-t {
+    border-top: 1px solid var(--white);
+}
+
+.border-white-b {
+    border-bottom: 1px solid var(--white);
+}
+
+.border-white-sub {
+    border: 1px solid var(--white-sub);
+}
+
+.border-white-sub-x {
+    border-left: 1px solid var(--white-sub);
+    border-right: 1px solid var(--white-sub);
+}
+
+.border-white-sub-y {
+    border-top: 1px solid var(--white-sub);
+    border-bottom: 1px solid var(--white-sub);
+}
+
+.border-white-sub-l {
+    border-left: 1px solid var(--white-sub);
+}
+
+.border-white-sub-r {
+    border-right: 1px solid var(--white-sub);
+}
+
+.border-white-sub-t {
+    border-top: 1px solid var(--white-sub);
+}
+
+.border-white-sub-b {
+    border-bottom: 1px solid var(--white-sub);
+}
+
+.border-grey {
+    border: 1px solid var(--grey);
+}
+
+.border-grey-x {
+    border-left: 1px solid var(--grey);
+    border-right: 1px solid var(--grey);
+}
+
+.border-grey-y {
+    border-top: 1px solid var(--grey);
+    border-bottom: 1px solid var(--grey);
+}
+
+.border-grey-l {
+    border-left: 1px solid var(--grey);
+}
+
+.border-grey-r {
+    border-right: 1px solid var(--grey);
+}
+
+.border-grey-t {
+    border-top: 1px solid var(--grey);
+}
+
+.border-grey-b {
+    border-bottom: 1px solid var(--grey);
+}
+
+.border-grey-sub {
+    border: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-x {
+    border-left: 1px solid var(--grey-sub);
+    border-right: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-y {
+    border-top: 1px solid var(--grey-sub);
+    border-bottom: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-l {
+    border-left: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-r {
+    border-right: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-t {
+    border-top: 1px solid var(--grey-sub);
+}
+
+.border-grey-sub-b {
+    border-bottom: 1px solid var(--grey-sub);
+}
+
+.border-black {
+    border: 1px solid var(--black);
+}
+
+.border-black-x {
+    border-left: 1px solid var(--black);
+    border-right: 1px solid var(--black);
+}
+
+.border-black-y {
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+}
+
+.border-black-l {
+    border-left: 1px solid var(--black);
+}
+
+.border-black-r {
+    border-right: 1px solid var(--black);
+}
+
+.border-black-t {
+    border-top: 1px solid var(--black);
+}
+
+.border-black-b {
+    border-bottom: 1px solid var(--black);
+}
+
+.border-pink {
+    border: 1px solid var(--pink);
+}
+
+.border-pink-x {
+    border-left: 1px solid var(--pink);
+    border-right: 1px solid var(--pink);
+}
+
+.border-pink-y {
+    border-top: 1px solid var(--pink);
+    border-bottom: 1px solid var(--pink);
+}
+
+.border-pink-l {
+    border-left: 1px solid var(--pink);
+}
+
+.border-pink-r {
+    border-right: 1px solid var(--pink);
+}
+
+.border-pink-t {
+    border-top: 1px solid var(--pink);
+}
+
+.border-pink-b {
+    border-bottom: 1px solid var(--pink);
+}
+
+.border-pink-sub {
+    border: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-x {
+    border-left: 1px solid var(--pink-sub);
+    border-right: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-y {
+    border-top: 1px solid var(--pink-sub);
+    border-bottom: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-l {
+    border-left: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-r {
+    border-right: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-t {
+    border-top: 1px solid var(--pink-sub);
+}
+
+.border-pink-sub-b {
+    border-bottom: 1px solid var(--pink-sub);
+}
+
+.border-orange {
+    border: 1px solid var(--orange);
+}
+
+.border-orange-x {
+    border-left: 1px solid var(--orange);
+    border-right: 1px solid var(--orange);
+}
+
+.border-orange-y {
+    border-top: 1px solid var(--orange);
+    border-bottom: 1px solid var(--orange);
+}
+
+.border-orange-l {
+    border-left: 1px solid var(--orange);
+}
+
+.border-orange-r {
+    border-right: 1px solid var(--orange);
+}
+
+.border-orange-t {
+    border-top: 1px solid var(--orange);
+}
+
+.border-orange-b {
+    border-bottom: 1px solid var(--orange);
+}
+
+.border-yellow {
+    border: 1px solid var(--yellow);
+}
+
+.border-yellow-x {
+    border-left: 1px solid var(--yellow);
+    border-right: 1px solid var(--yellow);
+}
+
+.border-yellow-y {
+    border-top: 1px solid var(--yellow);
+    border-bottom: 1px solid var(--yellow);
+}
+
+.border-yellow-l {
+    border-left: 1px solid var(--yellow);
+}
+
+.border-yellow-r {
+    border-right: 1px solid var(--yellow);
+}
+
+.border-yellow-t {
+    border-top: 1px solid var(--yellow);
+}
+
+.border-yellow-b {
+    border-bottom: 1px solid var(--yellow);
+}
+
+.border-teal {
+    border: 1px solid var(--teal);
+}
+
+.border-teal-x {
+    border-left: 1px solid var(--teal);
+    border-right: 1px solid var(--teal);
+}
+
+.border-teal-y {
+    border-top: 1px solid var(--teal);
+    border-bottom: 1px solid var(--teal);
+}
+
+.border-teal-l {
+    border-left: 1px solid var(--teal);
+}
+
+.border-teal-r {
+    border-right: 1px solid var(--teal);
+}
+
+.border-teal-t {
+    border-top: 1px solid var(--teal);
+}
+
+.border-teal-b {
+    border-bottom: 1px solid var(--teal);
+}
+
+.border-blue {
+    border: 1px solid var(--blue);
+}
+
+.border-blue-x {
+    border-left: 1px solid var(--blue);
+    border-right: 1px solid var(--blue);
+}
+
+.border-blue-y {
+    border-top: 1px solid var(--blue);
+    border-bottom: 1px solid var(--blue);
+}
+
+.border-blue-l {
+    border-left: 1px solid var(--blue);
+}
+
+.border-blue-r {
+    border-right: 1px solid var(--blue);
+}
+
+.border-blue-t {
+    border-top: 1px solid var(--blue);
+}
+
+.border-blue-b {
+    border-bottom: 1px solid var(--blue);
+}
+
+
+/* ==================== BORDER ====================================================================================== */
+
+
+/* ==================== SHAPE ======================================================================================= */
+
+.rect-wrapper-4w-by-5h {
+    position: relative;
+    padding-bottom: 125%;
+    height: 0;
+}
+
+.square-wrapper {
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+}
+
+.rect-wrapper-2w-by-1h {
+    position: relative;
+    padding-bottom: 50%;
+    height: 0;
+}
+
+.rect-wrapper-3w-by-2h {
+    position: relative;
+    padding-bottom: 66.66%;
+    height: 0;
+}
+
+.rect-wrapper-4w-by-3h {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+}
+
+.rect-wrapper-5w-by-4h {
+     position: relative;
+     padding-bottom: 80%;
+     height: 0;
+ }
+
+.fill-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.square-icon-smr {
+    width: 1rem;
+    height: 1rem;
+}
+
+.square-icon-sm {
+    width: 2rem;
+    height: 2rem;
+}
+
+.square-icon-md {
+    width: 3rem;
+    height: 3rem;
+}
+
+.square-icon-lg {
+    width: 6rem;
+    height: 6rem;
+}
+
+.rect-logo-login {
+    /*scale 1.2*/
+    width: 6rem;
+    height: 5rem;
+}
+
+.rect-owner-login {
+    /*scale 2.25*/
+    width: 28rem;
+    height: 12.4rem;
+}
+
+/* ==================== SHAPE ======================================================================================= */
+
+
+/* ==================== OTHER ======================================================================================= */
+
+.img-fill {
+    object-fit: fill;
+}
+
+.img-cover {
+    object-fit: cover;
+}
+
+.img-contain {
+    object-fit: contain;
+}
+
+/* hide input number spinner*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ==================== OTHER ======================================================================================= */
