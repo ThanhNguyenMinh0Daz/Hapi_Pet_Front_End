@@ -6,7 +6,8 @@ function ajaxSendOtp() {
                 hideItem('btnSendOTP');
                 showItem('linkSendOTP');
                 showItem('formOTP');
-                alert('Mã OTP đã được gửi')
+                // alert('Mã OTP đã được gửi');
+                $("#otpNum1").focus();
             } else {
                 alert('Số điện thoại không hợp lệ');
             }

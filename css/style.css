@@ -9,7 +9,7 @@ Luật thêm style:
     Chỉ nên bổ trợ cho bootstrap
 
 Luật dùng style:
-    BẮT BUỘC dùng class .txt thẻ body mọi trang
+    BẮT BUỘC dùng class .txt cho thẻ body mọi trang
 */
 /* ==================== IMPORT ====================================================================================== */
 /* ========== bootstrap ========== */
@@ -415,10 +415,12 @@ Luật dùng style:
 
 /* ==================== BORDER ====================================================================================== */
 
-.border-hover-shadow {}
+.border-hover-shadow {
+}
+
 .border-hover-shadow:hover, .border-shadow {
-    -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
 .border-white {
@@ -788,10 +790,10 @@ Luật dùng style:
 }
 
 .rect-wrapper-5w-by-4h {
-     position: relative;
-     padding-bottom: 80%;
-     height: 0;
- }
+    position: relative;
+    padding-bottom: 80%;
+    height: 0;
+}
 
 .fill-wrapper {
     position: absolute;

@@ -10,7 +10,6 @@ function hideItem(id) {
     $("#" + id).hide();
 }
 
-
 function btnPinkToggle(idOld, idNew) {
     $("#" + idOld).removeClass("btn-pink")
         .addClass("btn-pink-sub border-pink")
@@ -97,6 +96,60 @@ function orderServiceListTrending() {
         .addClass("col-lg-4 col-sm-6 mt-3 order-1");
 }
 
+/* account */
+function logout() {
+    window.localStorage.removeItem("account");
+}
+
+function fillLoginRegister(nav) {
+    nav.append(
+        "<div class='row m-0'>\n" +
+        "   <div class='col-6 text-center'>\n" +
+        "       <a href='login_petOwner_ajax.html' class='btn btn-pink w-100'>\n" +
+        "           Đăng nhập\n" +
+        "       </a>\n" +
+        "   </div>\n" +
+        "   <div class='col-6 text-center'>\n" +
+        "       <a href='login_petOwner_ajax.html' class='btn btn-teal w-100'>\n" +
+        "           Đăng ký\n" +
+        "       </a>\n" +
+        "   </div>\n" +
+        "</div>"
+    );
+}
+
+function fillAccount(nav, account) {
+    account = JSON.parse(account);
+    nav.append(
+        "<button type='button' class='btn btn-teal w-100 dropdown-toggle'\n" +
+        "        id='btnAccountGroup' data-bs-toggle='dropdown' aria-expanded='false'>\n" +
+        "   <i class='bi-person-circle'></i>&nbsp; " + account.displayName + "\n" +
+        "</button>\n\n" +
+        "<ul class='dropdown-menu w-100 text-end' aria-labelledby='btnAccountGroup'>\n" +
+        "   <li><a class='dropdown-item'\n" +
+        "          href='account_petOwner.html'>Tài khoản</a></li>\n" +
+        "   <li><a class='dropdown-item'\n" +
+        "          href='cart_petOwner.html'>Giỏ hàng</a></li>\n" +
+        "   <li><a class='dropdown-item'\n" +
+        "          href='order_history_petOwner.html'>Lịch sử mua hàng</a></li>\n" +
+        "   <li><a class='dropdown-item'\n" +
+        "          href='reservation_history_petOwner.html'>Lịch sử đặt lịch</a></li>\n" +
+        "   <li><a class='dropdown-item'\n" +
+        "          href='javascript:location.reload();' onclick='logout()'>Đăng xuất</a></li>\n" +
+        "</ul>"
+    );
+}
+
+function checkExistingLogin() {
+    let accountNav = $("#accountNav");
+    let account = window.localStorage.getItem("account");
+    if (account === null) {
+        fillLoginRegister(accountNav);
+    } else {
+        fillAccount(accountNav, account);
+    }
+}
+/* account*/
 
 /* detail service shop*/
 
