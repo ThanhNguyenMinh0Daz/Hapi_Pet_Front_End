@@ -97,6 +97,8 @@ function orderServiceListTrending() {
 }
 
 /* account */
+let accountString = window.localStorage.getItem("account");
+
 function logout() {
     window.localStorage.removeItem("account");
 }
@@ -118,8 +120,8 @@ function fillLoginRegister(nav) {
     );
 }
 
-function fillAccount(nav, account) {
-    account = JSON.parse(account);
+function fillAccountNav(nav, accountString) {
+    let account = JSON.parse(accountString);
     nav.append(
         "<button type='button' class='btn btn-teal w-100 dropdown-toggle'\n" +
         "        id='btnAccountGroup' data-bs-toggle='dropdown' aria-expanded='false'>\n" +
@@ -142,14 +144,45 @@ function fillAccount(nav, account) {
 
 function checkExistingLogin() {
     let accountNav = $("#accountNav");
-    let account = window.localStorage.getItem("account");
-    if (account === null) {
+
+    if (accountString === null) {
         fillLoginRegister(accountNav);
     } else {
-        fillAccount(accountNav, account);
+        fillAccountNav(accountNav, accountString);
     }
 }
-/* account*/
+
+function fillAccountPage() {
+    if (accountString === null) {
+        window.location.replace("index.html");
+    } else {
+        let account = JSON.parse(accountString);
+
+        $("#displayName").val(account.displayName);
+        $("#firstName").val(account.firstName);
+        $("#lastName").val(account.lastName);
+        $("#birthday").val(account.birthday);
+        $("#gender").val(account.gender);
+
+        $("#phone").val(account.phone);
+        $("#email").val(account.email);
+        $("#address").val(account.address);
+    }
+}
+
+function maxDateCurrentDate(id) {
+    let date = new Date();
+
+    let day = date.getDate();
+    if (day < 10) { day = "0" + day; }
+    let month = date.getMonth();
+    if (month < 10) { month = "0" + month; }
+    let year = date.getFullYear();
+
+    $("#" + id).attr("max", day + "-" + month + "-" + year);
+}
+
+/* account */
 
 /* detail service shop*/
 

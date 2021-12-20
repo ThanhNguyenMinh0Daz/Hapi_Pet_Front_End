@@ -12,7 +12,7 @@
 <body class="txt bg-white-sub" onload="fillServiceShopDetail(window.location.search)">
 
 <!-- header -->
-<div class="container-fluid border-grey-b bg-white sticky-top">
+<div class="container-fluid border-grey-b bg-white sticky-top" onload="checkExistingLogin()">
     <div class="row py-2">
 
         <!-- Logo -->
@@ -81,25 +81,8 @@
                             <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
                         </div>
 
-                        <div class="col-8 dropdown px-0 py-1">
-                            <button type="button" class="btn btn-teal w-100 dropdown-toggle"
-                                    id="btnAccountGroup" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-person-circle"></i>
-                                &nbsp; Nguyễn Thành
-                            </button>
-
-                            <ul class="dropdown-menu w-100 text-end" aria-labelledby="btnAccountGroup">
-                                <li><a class="dropdown-item"
-                                       href="account_petOwner.html">Tài khoản</a></li>
-                                <li><a class="dropdown-item"
-                                       href="cart_petOwner.html">Giỏ hàng</a></li>
-                                <li><a class="dropdown-item"
-                                       href="order_history_petOwner.html">Lịch sử mua hàng</a></li>
-                                <li><a class="dropdown-item"
-                                       href="reservation_history_petOwner.html">Lịch sử đặt lịch</a></li>
-                                <li><a class="dropdown-item"
-                                       href="index.html">Đăng xuất</a></li>
-                            </ul>
+                        <div class="col-8 dropdown px-0 py-1" id="accountNav">
+                            <!-- Autofill with js -->
                         </div>
 
                         <div class="col-2 text-center dropdown py-1">
