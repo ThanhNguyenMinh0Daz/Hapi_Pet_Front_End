@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
-<body class="txt bg-white-sub" onload="checkExistingLogin(), fillServiceHome()">
+<body class="txt bg-white-sub" onload="checkExistingLogin(); fillServiceHome()">
 
 <!-- header -->
 <div class="container-fluid border-grey-b bg-white sticky-top">
@@ -173,43 +173,31 @@
                     <!-- filter -->
                     <div class="row pb-3 border-grey-b">
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="orderServiceListNew()">
-                            <button class="btn btn-pink txt-sm w-100" id="serviceNew">
-                                Mới nhất
-                            </button>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="orderServiceListTrending()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceTrending"
-                                    onclick="btnPinkToggle('serviceNew', 'serviceTrending')">
-                                Thịnh hành
-                            </button>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-4 mt-3"
-                             onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom'); btnPinkUnfocus('serviceHotel'); unfilterService()">
-                            <button class="btn btn-pink txt-sm w-100" id="serviceAll"
+                        <div class="col-lg-3 col-sm-6 mt-3"
+                             onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom');
+                                        btnPinkUnfocus('serviceHotel'); unfilterServiceShop()">
+                            <button class="btn btn-pink w-100" id="serviceAll"
                                     onclick="btnPinkFocus('serviceAll')">
                                 Tất cả
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceVet"
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                            <button class="btn btn-pink-sub border-pink w-100" id="serviceVet"
                                     onclick="btnPinkFocus('serviceVet')">
                                 Thú y
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceGroom"
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                            <button class="btn btn-pink-sub border-pink w-100" id="serviceGroom"
                                     onclick="btnPinkFocus('serviceGroom')">
                                 Grooming-spa
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceHotel"
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                            <button class="btn btn-pink-sub border-pink w-100" id="serviceHotel"
                                     onclick="btnPinkFocus('serviceHotel')">
                                 Khách sạn
                             </button>
@@ -218,26 +206,25 @@
                     </div>
 
                     <!-- service list -->
-                    <div class="row" id="seviceListLocation">
+                    <div class="row" id="serviceShopList">
 
                         <!-- service demo / Giữ lại hay bỏ đều được -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-1" id="service0" style="display: none">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop0" style="display: none">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=shopID"
                                    class="text-decoration-none txt-black txt-hover-black">
                                     <div class="square-wrapper border-grey-sub-b">
                                         <div class="fill-wrapper">
-                                            <img src="https://giuchomeo.com/wp-content/uploads/2021/02/IMG_20210130_130947_756-scaled.jpg"
-                                                 alt="img" class="w-100 h-100 img-cover rounded-top">
+                                            <img src="shopImgLink" alt="img" class="w-100 h-100 img-cover rounded-top">
                                         </div>
                                     </div>
 
                                     <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; Trông Giữ Chó Mèo HCM
+                                        <i class="bi-shop-window"></i>&nbsp; shopName
                                     </p>
 
                                     <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 338/3/2 Nơ Trang Long, P.13, Bình Thạnh, TP.HCM
+                                        <i class="bi-geo-alt"></i>&nbsp; shopAddress
                                     </p>
 
                                     <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
@@ -246,27 +233,28 @@
                                         <i class="bi-star-fill"></i>
                                         <i class="bi-star-fill"></i>
                                         <i class="bi-star-fill"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
+                                        <!-- 3 icon: bi-star (rỗng) ; bi-star-half (nửa) ; bi-star-fill (đủ)-->
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; reviewList.size()</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
-
+                                    <div class="row txt-bold mx-0 mb-2 " id="serviceShop0Category">
+                                        <!-- Nếu có category thì thêm không thì thôi -->
                                         <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">
-                                                <i class="bi-building"></i>&nbsp; Hotel
-                                            </p>
+                                            <!--<p class="txt-sm text-center rounded border-pink py-1 mb-0">-->
+                                            <!--    <i class="bi-plus-circle"></i>&nbsp; Vet-->
+                                            <!--</p>-->
                                         </div>
 
                                         <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">-->
-                                            <!--                                                <i class="bi-plus-circle"></i>&nbsp; Vet-->
-                                            <!--                                            </p>-->
+                                            <!--<p class="txt-sm text-center rounded border-teal py-1 mb-0">-->
+                                            <!--    <i class="bi-scissors"></i>&nbsp; Groom-->
+                                            <!--</p>-->
                                         </div>
 
                                         <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">-->
-                                            <!--                                                <i class="bi-scissors"></i>&nbsp; Groom-->
-                                            <!--                                            </p>-->
+                                            <!--<p class="txt-sm text-center rounded border-yellow py-1 mb-0">-->
+                                            <!--    <i class="bi-building"></i>&nbsp; Hotel-->
+                                            <!--</p>-->
                                         </div>
 
                                     </div>

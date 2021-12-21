@@ -173,42 +173,29 @@
                     <!-- filter -->
                     <div class="row pb-3 border-grey-b">
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="orderServiceListNew()">
-                            <button class="btn btn-pink txt-sm w-100" id="serviceNew">
-                                Mới nhất
-                            </button>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="orderServiceListTrending()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceTrending"
-                                    onclick="btnPinkToggle('serviceNew', 'serviceTrending')">
-                                Thịnh hành
-                            </button>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-4 mt-3"
-                             onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom'); btnPinkUnfocus('serviceHotel'); unfilterService()">
+                        <div class="col-lg-3 col-sm-6 mt-3"
+                             onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom'); btnPinkUnfocus('serviceHotel'); unfilterServiceShop()">
                             <button class="btn btn-pink txt-sm w-100" id="serviceAll"
                                     onclick="btnPinkFocus('serviceAll')">
                                 Tất cả
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
                             <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceVet"
                                     onclick="btnPinkFocus('serviceVet')">
                                 Thú y
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
                             <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceGroom"
                                     onclick="btnPinkFocus('serviceGroom')">
                                 Grooming-spa
                             </button>
                         </div>
 
-                        <div class="col-lg-2 col-sm-4 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterService()">
+                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
                             <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceHotel"
                                     onclick="btnPinkFocus('serviceHotel')">
                                 Khách sạn
@@ -218,10 +205,10 @@
                     </div>
 
                     <!-- service list -->
-                    <div class="row">
+                    <div class="row" id="serviceShopList">
 
                         <!-- service 1 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-1" id="service1">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop1">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=CSCHHCM"
                                    class="text-decoration-none txt-black txt-hover-black">
@@ -249,7 +236,7 @@
                                         &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
+                                    <div class="row txt-bold mx-0 mb-2 jquery-service-hotel" id="serviceShop1Category">
 
                                         <div class="col-4 mt-2">
                                             <p class="txt-sm text-center rounded border-yellow py-1 mb-0">
@@ -276,7 +263,7 @@
                         </div>
 
                         <!-- service 2 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-2" id="service2">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop2">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=PKTHYVietpet"
                                    class="text-decoration-none txt-black txt-hover-black">
@@ -305,7 +292,7 @@
                                         &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
+                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet" id="serviceShop2Category">
 
                                         <div class="col-4 mt-2">
                                             <p class="txt-sm text-center rounded border-pink py-1 mb-0">
@@ -332,7 +319,7 @@
                         </div>
 
                         <!-- service 3 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-3" id="service3">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop3">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=TYProCare"
                                    class="text-decoration-none txt-black txt-hover-black">
@@ -361,7 +348,7 @@
                                         &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
+                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom" id="serviceShop3Category">
 
                                         <div class="col-4 mt-2">
                                             <p class="txt-sm text-center rounded border-pink py-1 mb-0">
@@ -388,7 +375,7 @@
                         </div>
 
                         <!-- service 4 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-4" id="service4">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop4">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=DRBullSpa"
                                    class="text-decoration-none txt-black txt-hover-black">
@@ -418,7 +405,8 @@
                                         &nbsp; <i class="txt-black border-grey-l">&nbsp; (4 đánh giá)</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
+                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom jquery-service-hotel"
+                                         id="serviceShop4Category">
 
                                         <div class="col-4 mt-2">
                                             <p class="txt-sm text-center rounded border-pink py-1 mb-0">
@@ -445,7 +433,7 @@
                         </div>
 
                         <!-- service 5 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 order-5" id="service5">
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop5">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=PPetHotelASpa"
                                    class="text-decoration-none txt-black txt-hover-black">
@@ -474,7 +462,8 @@
                                         &nbsp; <i class="txt-black border-grey-l">&nbsp; (2 đánh giá)</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2">
+                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom jquery-service-hotel"
+                                         id="serviceShop5Category">
 
                                         <div class="col-4 mt-2">
                                             <p class="txt-sm text-center rounded border-pink py-1 mb-0">
