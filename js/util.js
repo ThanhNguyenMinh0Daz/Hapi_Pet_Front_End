@@ -165,7 +165,7 @@ function fillAccountPage() {
         $("#gender").val(account.gender);
 
         $("#phone").val(account.phone);
-        $("#email").val(account.email);
+        $("#email").val(account.username);
         $("#address").val(account.address);
     }
 }
