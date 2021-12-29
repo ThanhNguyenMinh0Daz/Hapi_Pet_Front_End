@@ -610,3 +610,7 @@ function moveToReservation(shop) {
     window.location.href = "reservation_petOwner.html?shop=" + shop;
     return;
 }
+
+function fillProductDetail{
+    
+}

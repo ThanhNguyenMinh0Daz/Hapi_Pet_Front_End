@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/shopStyle.css" />
+</head>
+
+<body class="txt bg-white-sub" onload="fillServiceShopDetail(window.location.search)">
+    <!-- header -->
+    <div class="container-fluid border-grey-b bg-white sticky-top" onload="checkExistingLogin()">
+        <div class="row py-2">
+            <!-- Logo -->
+            <div class="col-lg-1 col-sm-2 d-flex border-pink-r align-items-center">
+                <a href="index.html" class="text-center w-100">
+                    <img src="https://i.imgur.com/WjN1HZX.png" alt="Logo" class="mx-auto w-75 h-auto" />
+                </a>
+            </div>
+            <!-- Nav bar -->
+            <div class="col-lg-11 col-sm-10">
+                <div class="row h-100 d-flex align-items-lg-center">
+                    <!-- Home, Shop, Service -->
+                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-house-door"></i>
+                                    &nbsp; Trang chủ
+                                </a>
+                            </div>
+                            <div class="col border-pink-r btn-group py-1">
+                                <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-basket"></i>
+                                    &nbsp; Siêu thị
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-shop-window"></i>
+                                    &nbsp; Dịch vụ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Forum, Pet blog, My pet -->
+                    <div class="col-lg-4 col-sm-12 order-lg-2 order-sm-3">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="forum_petOwner/html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-chat-right-text"></i>
+                                    &nbsp; Forum
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="petBlog_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-file-richtext"></i>
+                                    &nbsp; Pet Blog
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="myPet_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-journals"></i>
+                                    &nbsp; My Pet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search, Account, setting -->
+                    <div class="col-lg-4 col-sm-12 order-lg-3 order-sm-1">
+                        <div class="row">
+                            <div class="col-2 text-center py-1">
+                                <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
+                            </div>
+                            <div class="col-8 dropdown px-0 py-1" id="accountNav">
+                                <!-- Autofill with js -->
+                            </div>
+                            <div class="col-2 text-center dropdown py-1">
+                                <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle" id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi-gear"></i>
+                                </button>
+                                <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                                    <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
+                                    <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
+                                    <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb -->
+    <div class="mx-3 mt-3 rounded bg-white">
+        <div class="container-fluid pt-3 ps-5">
+            <div class="row row-cols-1">
+                <div class="col">
+                    <p class="txt-grey txt-bold">
+                        <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                            <i class="bi-house-door"></i>&nbsp; Trang chủ
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                            Siêu Thị
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a href="shop_productDetail.html" class="text-decoration-none txt-pink txt-hover-pink">
+                            Chi tiết
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="mx-3 mt-3 rounded bg-white">
+        <div class="container-fluid px-5 pb-3">
+            <!-- product info -->
+            <div class="row border-grey-sub-b pt-4 pb-3">
+                <!-- product img -->
+                <div class="col-lg-6 col-sm-12 mt-3">
+                    <!-- current img -->
+                    <div class="rect-wrapper-3w-by-2h rounded border-orange">
+                        <div class="fill-wrapper text-center">
+                            <img src="" alt="img" id="productImg" class="w-100 h-100 img-contain rounded" />
+                        </div>
+                    </div>
+                    <!-- img list -->
+                    <div class="row flex-row flex-nowrap overflow-auto rounded border-orange mx-0 mt-3" id="productImgList"></div>
+                </div>
+                <!-- product detail -->
+                <div class="txt txt-black col-3 mt-3">
+                    <p class="txt-bold txt-lgx" id="productName">Royal Cannin</p>
+                    <p class="txt-sm txt-pink" id="productStar"></p>
+                    <p class="" id="productDesc"></p>
+                    <div class="meta">
+                        <div class="price">
+                            <h3>
+                                110.000 đ
+                            </h3>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Giao đến </span>
+                        <span class="address"><strong>449 Trần Hưng Đạo, Q1, Tp HCM</strong></span>
+                    </div>
+                    <br>
+                    <p class="label">Số lượng</p>
+                    <div class="group-input">
+                        <button class="">
+                            <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-remove.svg" alt="remove-icon" width="20" height="20">
+                        </button>
+                        <input type="text" class="input" value="1">
+                        <button>
+                            <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-add.svg" alt="add-icon" width="20" height="20">
+                        </button>
+                    </div>
+                    <br>
+                    <div class="group-button">
+                        <button type="button" class="btn-add-to-cart" onclick="addNewProduct()">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+                <!-- Shop Detail -->
+                <div class="col-3 mt-3">
+                    <div class="card">
+                        <a href=""><img src="https://i.imgur.com/XQ8iJ82.png" alt="" class="shop_icon">
+                            <span for=""><strong>Minh thu pet store</strong></span></a>
+                        <div class="seller-detail">
+                            <div class="seller_item review">
+                                <div class="title"><span>4.9 / 5</span>
+                                    <div class="rating">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="sub-title">446 đánh giá</div>
+                            </div>
+                            <div class="border-left"></div>
+                            <div class="seller_item normal">
+                                <div class="title"><span>123</span></div>
+                                <div class="sub-title">Người theo dõi</div>
+                            </div>
+                            <div class="border-left"></div>
+                            <div class="seller_item chat">
+                                <div class="title"><span>92%</span></div>
+                                <div class="sub-title">Phản hồi Chat</div>
+                            </div>
+                        </div>
+                        <div class="style__StyledCustomerBenefits-sc-4w35vj-0 dcoZYl">
+                            <div class="benefit-item">
+                                <img alt="compensation-icon" src="https://salt.tikicdn.com/ts/upload/2c/48/44/720434869e103b03aaaf1a104d91ad25.png" height="32" width="32">
+                                <span>Hoàn tiền<br>
+                                    <b>111%</b><br>
+                                    nếu hàng giả
+                                </span>
+                            </div>
+                            <div class="benefit-item"><img alt="compensation-icon" src="https://salt.tikicdn.com/ts/upload/4b/a1/23/1606089d5423e5cba05e3820ad39708e.png" height="32" width="32"><span>Mở hộp<br>kiểm tra<br>nhận hàng</span>
+                            </div>
+                            <div class="benefit-item"><img alt="compensation-icon" src="https://salt.tikicdn.com/ts/upload/63/75/6a/144ada409519d72e2978ad2c61bc02a7.png" height="32" width="32"><span>Đổi trả trong<br><b>30 ngày</b><br>nếu sp lỗi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- Similar product -->
+            <div class="row row-cols-1">
+                <h5 class="title-heading">Sản phẩm tương tự</h5>
+                <!-- product 1 -->
+                <div class="col-lg-3 col-sm-4 mt-3">
+                        <div class="rounded border-pink border-hover-shadow h-100">
+                                <a href="shop_productDetail.html" class="text-decoration-none txt-black txt-hover-black">
+                                    <div class="square-wrapper border-grey-sub-b">
+                                        <div class="fill-wrapper">
+                                            <img src="https://cf.shopee.vn/file/507b2a54250774c9bd2a6367a6e52eda" alt="img"
+                                                 class="w-100 h-100 img-cover rounded-top">
+                                        </div>
+                                    </div>
+
+                                    <p class="txt-bold txt-hover-pink px-2 my-2">
+                                        Royal cannin cho mèo
+                                    </p>
+
+                                    <p class="txt-smx txt-pink px-2 mb-2">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-half"></i>
+                                        <i class="bi-star"></i>
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; Đã bán 100+</i>
+                                    </p>
+
+                                    <p class="txt-bold px-2 mb-2">
+                                        110.000 <u>đ</u>
+                                    </p>
+                                </a>
+                        </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-4 mt-3">
+                        <div class="rounded border-pink border-hover-shadow h-100">
+                                <a href="shop_productDetail.html" class="text-decoration-none txt-black txt-hover-black">
+                                    <div class="square-wrapper border-grey-sub-b">
+                                        <div class="fill-wrapper">
+                                            <img src="https://cf.shopee.vn/file/507b2a54250774c9bd2a6367a6e52eda" alt="img"
+                                                 class="w-100 h-100 img-cover rounded-top">
+                                        </div>
+                                    </div>
+
+                                    <p class="txt-bold txt-hover-pink px-2 my-2">
+                                        Royal cannin cho mèo
+                                    </p>
+
+                                    <p class="txt-smx txt-pink px-2 mb-2">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-half"></i>
+                                        <i class="bi-star"></i>
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; Đã bán 100+</i>
+                                    </p>
+
+                                    <p class="txt-bold px-2 mb-2">
+                                        110.000 <u>đ</u>
+                                    </p>
+                                </a>
+                        </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 mt-3">
+                        <div class="rounded border-pink border-hover-shadow h-100">
+                                <a href="shop_productDetail.html" class="text-decoration-none txt-black txt-hover-black">
+                                    <div class="square-wrapper border-grey-sub-b">
+                                        <div class="fill-wrapper">
+                                            <img src="https://cf.shopee.vn/file/507b2a54250774c9bd2a6367a6e52eda" alt="img"
+                                                 class="w-100 h-100 img-cover rounded-top">
+                                        </div>
+                                    </div>
+
+                                    <p class="txt-bold txt-hover-pink px-2 my-2">
+                                        Royal cannin cho mèo
+                                    </p>
+
+                                    <p class="txt-smx txt-pink px-2 mb-2">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-half"></i>
+                                        <i class="bi-star"></i>
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; Đã bán 100+</i>
+                                    </p>
+
+                                    <p class="txt-bold px-2 mb-2">
+                                        110.000 <u>đ</u>
+                                    </p>
+                                </a>
+                        </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 mt-3">
+                        <div class="rounded border-pink border-hover-shadow h-100">
+                                <a href="shop_productDetail.html" class="text-decoration-none txt-black txt-hover-black">
+                                    <div class="square-wrapper border-grey-sub-b">
+                                        <div class="fill-wrapper">
+                                            <img src="https://cf.shopee.vn/file/507b2a54250774c9bd2a6367a6e52eda" alt="img"
+                                                 class="w-100 h-100 img-cover rounded-top">
+                                        </div>
+                                    </div>
+
+                                    <p class="txt-bold txt-hover-pink px-2 my-2">
+                                        Royal cannin cho mèo
+                                    </p>
+
+                                    <p class="txt-smx txt-pink px-2 mb-2">
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-half"></i>
+                                        <i class="bi-star"></i>
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; Đã bán 100+</i>
+                                    </p>
+
+                                    <p class="txt-bold px-2 mb-2">
+                                        110.000 <u>đ</u>
+                                    </p>
+                                </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="container-fluid border-grey-t bg-pink-sub-bg-login bg-footer-img mt-3">
+        <div class="row row-cols-1 px-lg-5 px-sm-3 mx-lg-5 mx-sm-4">
+            <div class="col-lg-3 col-sm-6 order-lg-1 order-sm-2 py-3 ps-lg-5 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Về chúng tôi</p>
+                <p><a href="gioithieu.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Giới thiệu Hapi Pet</a>
+                </p>
+                <p><a href="tuyendung.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Tuyển dụng nhân sự</a>
+                </p>
+                <p><a href="become_partner.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Trở thành đối tác</a>
+                </p>
+                <p><a href="chinhsach.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Chính sách thanh toán</a>
+                </p>
+            </div>
+            <div class="col-lg-6 col-sm-12 order-lg-2 order-sm-1 py-3 mt-3">
+                <p class="mt-lg-4 mt-sm-0 mb-0">
+                    Hapi Pet mang đến cho người dùng một cộng đồng những người yêu thích thú cưng. Ở đây các bạn có thể nhận
+                    được dịch vụ chăm sóc tốt nhất và cùng nhau chia sẻ những khoảnh khắc đáng nhớ về thú cưng của mình.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 order-lg-3 order-sm-3 py-3 ps-lg-4 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Liên hệ</p>
+                <p><a href="#" class="text-decoration-none txt-bold txt-black txt-hover-pink">Công ty Tâm Huyết Việt</a>
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-geo-alt txt-pink"></i>
+                    &nbsp; Trần Hưng Đạo, Q1, Tp HCM
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-telephone txt-pink"></i>
+                    &nbsp; 090 6979 xxx
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-envelope txt-pink"></i>
+                    &nbsp; hapipet@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="row bg-grey px-5 py-2">
+            <p class="txt-bold txt-white mb-0">&copy;&nbsp; 2021&nbsp; Design by &nbsp;
+                <a href="#" class="text-decoration-none txt-white txt-hover-orange">Nguyen Thanh</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-teal">Do Nam</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-yellow">Nguyen Tam</a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.esm.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
