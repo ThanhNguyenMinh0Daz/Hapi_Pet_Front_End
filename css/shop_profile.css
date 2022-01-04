@@ -1,0 +1,331 @@
+.bexpsg {
+    max-height: 155px;
+    background-image: url(../img/shop_background.png);
+    background-size: cover;
+    z-index: 1;
+}
+
+.jHoZit {
+    padding-left: 24px;
+    padding-top: 24px;
+    display: flex;
+    max-height: 91px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.jZYoaR {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-left: 16px;
+}
+
+.shop_avatar {
+    width: 64px;
+}
+
+.shop_avatar img {
+    border-radius: 100%;
+}
+
+.shop_name {
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    font-size: 17px;
+}
+
+.shop_follower {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.54;
+    letter-spacing: normal;
+    font-stretch: normal;
+    margin-top: 2.5px;
+}
+
+.shop_tab_list {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.fKjHLu {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.shop_tab {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 18px 0px;
+    cursor: pointer;
+    position: relative;
+    width: 120px;
+    text-align: center;
+}
+
+.tab_selected {
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    line-height: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    transition: font-weight 0.1s ease-in 0s;
+    border-bottom: 2px solid rgba(236, 242, 36, 0.58)
+}
+
+.tab_default {
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    line-height: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: normal;
+    transition: font-weight 0.1s ease-in 0s;
+}
+
+.boNzsF {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.jyZwoB {
+    padding: 16px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.dBZmOq {
+    font-size: 13px;
+    line-height: 20px;
+    color: rgb(120, 120, 120);
+    margin-right: 16px;
+}
+
+.ejacAJ {
+    display: flex;
+}
+
+.filter_selected {
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: rgb(13, 92, 182);
+    color: rgb(255, 255, 255);
+}
+
+.filter_default {
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    color: rgb(36, 36, 36);
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.shop_AllList {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+}
+
+.shop_body {
+    width: 1200px;
+}
+
+.shop_product {
+    width: 20%;
+    text-decoration: none;
+    display: flex;
+    position: relative;
+    border: 1px solid transparent;
+    cursor: pointer;
+    height: 100%;
+    align-items: flex-start;
+}
+
+.eusfFV {
+    display: flex;
+    padding: 16px 8px 8px;
+    color: rgb(36, 36, 36);
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.shop_product_thumb {
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+    margin: 0px 7px 12px;
+    height: 200px;
+    width: 200px;
+    display: flex;
+}
+
+.eusfFV:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.shop_product_info {
+    margin-bottom: 8px;
+}
+
+.shop_product_name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.shop_product_name>span {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0px 0px 4px;
+    line-height: 20px;
+}
+
+/*-------------------------------------*/
+/*Shop Info page*/
+.shop_info{
+    width: 1110px;
+    border: 1px solid rgb(242, 242, 242);
+}
+.gvLnrP {
+    padding-left: 35px;
+    width: 1110px;
+    border-left: 1px solid rgb(242, 242, 242);
+}
+
+.cGwUPK {
+    display: flex;
+    flex-flow: row wrap;
+    background: white;
+}
+
+.shop_col {
+    flex-flow: row;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 12px 12px 12px 12px;
+    width: 100%;
+    display: flex;
+}
+
+.jpeWpY {
+    font-size: 13px;
+    color: rgb(120, 120, 120);
+    margin-left: 5px;
+    line-height: 20px;
+    width: 160px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.GxEKI {
+    font-size: 13px;
+    color: rgb(36, 36, 36);
+}
+
+/*---------------------------------------------------------------------*/
+/*Shop Dashboard page*/
+.ant-card-bordered {
+    border: 1px solid #f0f0f0;
+}
+
+.ant-card {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    font-feature-settings: "tnum";
+    position: relative;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.ant-card-type-inner .ant-card-head {
+    padding: 0 24px;
+    background: #fafafa;
+}
+
+.ant-card-head {
+    min-height: 48px;
+    margin-bottom: -1px;
+    padding: 0 24px;
+    color: rgba(0,0,0,.85);
+    font-weight: 500;
+    font-size: 16px;
+    background: transparent;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 2px 2px 0 0;
+}
+
+.ant-card-head-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.ant-card-type-inner .ant-card-head-title {
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+.anticon {
+    display: inline-block;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -0.125em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ant-card-type-inner .ant-card-extra {
+    padding: 13.5px 0;
+}
+
+.ant-card-extra {
+    float: right;
+    margin-left: auto;
+    padding: 16px 0;
+    color: rgba(0,0,0,.85);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.ant-divider-vertical {
+    position: relative;
+    top: -0.06em;
+    display: inline-block;
+    height: 0.9em;
+    margin: 0 8px;
+    vertical-align: middle;
+    border-top: 0;
+    border-left: 1px solid rgba(0,0,0,.06);
+}

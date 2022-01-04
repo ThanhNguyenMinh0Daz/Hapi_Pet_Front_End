@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết Shop</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/shop_profile.css" />
+</head>
+
+<body class="txt bg-white-sub" onload="fillServiceShopDetail(window.location.search)">
+    <!-- header -->
+    <div class="container-fluid border-grey-b bg-white sticky-top" onload="checkExistingLogin()">
+        <div class="row py-2">
+            <!-- Logo -->
+            <div class="col-lg-1 col-sm-2 d-flex border-pink-r align-items-center">
+                <a href="index.html" class="text-center w-100">
+                    <img src="https://i.imgur.com/WjN1HZX.png" alt="Logo" class="mx-auto w-75 h-auto" />
+                </a>
+            </div>
+            <!-- Nav bar -->
+            <div class="col-lg-11 col-sm-10">
+                <div class="row h-100 d-flex align-items-lg-center">
+                    <!-- Home, Shop, Service -->
+                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-house-door"></i>
+                                    &nbsp; Trang chủ
+                                </a>
+                            </div>
+                            <div class="col border-pink-r btn-group py-1">
+                                <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-basket"></i>
+                                    &nbsp; Siêu thị
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-shop-window"></i>
+                                    &nbsp; Dịch vụ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Forum, Pet blog, My pet -->
+                    <div class="col-lg-4 col-sm-12 order-lg-2 order-sm-3">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="forum_petOwner/html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-chat-right-text"></i>
+                                    &nbsp; Forum
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="petBlog_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-file-richtext"></i>
+                                    &nbsp; Pet Blog
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="myPet_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-journals"></i>
+                                    &nbsp; My Pet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search, Account, setting -->
+                    <div class="col-lg-4 col-sm-12 order-lg-3 order-sm-1">
+                        <div class="row">
+                            <div class="col-2 text-center py-1">
+                                <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
+                            </div>
+                            <div class="col-8 dropdown px-0 py-1" id="accountNav">
+                                <!-- Autofill with js -->
+                            </div>
+                            <div class="col-2 text-center dropdown py-1">
+                                <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle" id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi-gear"></i>
+                                </button>
+                                <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                                    <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
+                                    <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
+                                    <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="my-2">
+        <!-- Section profile list -->
+        <div class="bg-white mb-2">
+            <div class="container">
+                <div class="bexpsg">
+                    <!-- Store name -->
+                    <div class="jHoZit">
+                        <div class="shop_avatar"><img src="https://i.imgur.com/XQ8iJ82.png" alt="" width="100%"></div>
+                        <div class="jZYoaR">
+                            <div class="shop_name">Minh Thu petstore</div>
+                            <!-- <div class="shop_follower">123 người theo dõi</div> -->
+                        </div>
+                    </div>
+                    <!-- End store name -->
+                    <!-- Store tab -->
+                    <div class="Header__MenuSearchWrapper-sc-vgcg69-6 shop_tab_list">
+                        <div class="MenuTab__WrapperTabMenu-sc-lsdhqe-2 fKjHLu">
+                            <div class="MenuTab__WrapperOption-sc-lsdhqe-0 shop_tab">
+                                <a href="shop_profile.html">
+                                    <div class="MenuTab__TextOption-sc-lsdhqe-1 tab_default">Cửa Hàng</div>
+                                </a>
+                                
+                            </div>
+                            <div class="MenuTab__WrapperOption-sc-lsdhqe-0 shop_tab">
+                                <a href="shop_info.html">
+                                    <div class="MenuTab__TextOption-sc-lsdhqe-1 tab_selected">Hồ Sơ Cửa Hàng</div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- <div class="SearchInput__Wrapper-sc-4v92vf-0 dUkuyS"><i class="SearchInput__SearchIcon-sc-4v92vf-2 hjTfai tikicon icon-search"></i><input type="text" value="" placeholder="Tìm sản phẩm tại cửa hàng" class="SearchInput__Input-sc-4v92vf-1 khDiHu"></div> -->
+                    </div>
+                </div>
+                <div class="shop_body">
+                    <div class="shop_info">
+                        <div class="shop_col">
+                            <span class="jpeWpY">
+                                <img alt="bio" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/time.svg">
+                                <span class="jpeWpY">Thành viên từ năm </span>
+                                </span>
+                            <span class="GxEKI">2021</span>
+                        </div>
+                        <div class="shop_col">
+                            <span class="StoreInfo__InfoLabel-sc-1un24du-4 jpeWpY"><img alt="product" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/product.svg"><span class="StoreInfo__InfoLabel-sc-1un24du-4 jpeWpY">Sản phẩm</span></span>
+                            <span class="GxEKI">4+</span>
+                        </div>
+                        <div class="shop_col">
+                            <span class="StoreInfo__InfoLabel-sc-1un24du-4 jpeWpY"><img alt="time" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/bio.svg"><span class="StoreInfo__InfoLabel-sc-1un24du-4 jpeWpY">Mô tả cửa hàng</span></span>
+                            <span class="GxEKI">Mua online sản phẩm của Minh Thu petstore</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="container-fluid border-grey-t bg-pink-sub-bg-login bg-footer-img mt-3">
+        <div class="row row-cols-1 px-lg-5 px-sm-3 mx-lg-5 mx-sm-4">
+            <div class="col-lg-3 col-sm-6 order-lg-1 order-sm-2 py-3 ps-lg-5 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Về chúng tôi</p>
+                <p><a href="gioithieu.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Giới thiệu Hapi Pet</a>
+                </p>
+                <p><a href="tuyendung.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Tuyển dụng nhân sự</a>
+                </p>
+                <p><a href="become_partner.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Trở thành đối tác</a>
+                </p>
+                <p><a href="chinhsach.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Chính sách thanh toán</a>
+                </p>
+            </div>
+            <div class="col-lg-6 col-sm-12 order-lg-2 order-sm-1 py-3 mt-3">
+                <p class="mt-lg-4 mt-sm-0 mb-0">
+                    Hapi Pet mang đến cho người dùng một cộng đồng những người yêu thích thú cưng. Ở đây các bạn có thể nhận
+                    được dịch vụ chăm sóc tốt nhất và cùng nhau chia sẻ những khoảnh khắc đáng nhớ về thú cưng của mình.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 order-lg-3 order-sm-3 py-3 ps-lg-4 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Liên hệ</p>
+                <p><a href="#" class="text-decoration-none txt-bold txt-black txt-hover-pink">Công ty Tâm Huyết Việt</a>
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-geo-alt txt-pink"></i>
+                    &nbsp; Trần Hưng Đạo, Q1, Tp HCM
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-telephone txt-pink"></i>
+                    &nbsp; 090 6979 xxx
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-envelope txt-pink"></i>
+                    &nbsp; hapipet@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="row bg-grey px-5 py-2">
+            <p class="txt-bold txt-white mb-0">&copy;&nbsp; 2021&nbsp; Design by &nbsp;
+                <a href="#" class="text-decoration-none txt-white txt-hover-orange">Nguyen Thanh</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-teal">Do Nam</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-yellow">Nguyen Tam</a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.esm.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

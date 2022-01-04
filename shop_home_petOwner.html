@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/shopStyle.css"/>
 </head>
 
 <body class="txt bg-white-sub" onload="checkExistingLogin()">
@@ -86,16 +87,19 @@
                         </div>
 
                         <div class="col-2 text-center dropdown py-1">
-                            <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle"
+                            <a href="cart_home.html">
+                                <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle"
                                     id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-gear"></i>
+                                <i class="bi bi-cart"></i>
+                                <span class="cart_quantity" id="cart_quantity" style="">0</span>
                             </button>
-
-                            <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                            </a>
+                            
+                            <!-- <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
                                 <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
                                 <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
                                 <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                 </div>
