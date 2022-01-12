@@ -174,9 +174,15 @@ function filterServiceShop() {
         return;
     }
 
-    for (let i = 1; i < $("#serviceShopList .jquery-service-shop").length; i++) {
+    let serviceShoplist = $("#serviceShopList .jquery-service-shop");
+    serviceShoplist.hide();
+
+    alert("vet : " + filterVet + "/n" +
+        "groom : " + filterGroom + "/n" +
+        "hotel : " + filterHotel + "/n")
+
+    for (let i = 1; i < serviceShoplist.length; i++) {
         let serviceShop = $("#serviceShop" + i);
-        serviceShop.hide();
 
         let serviceShopCategory = $("#serviceShop" + i + "Category");
 
@@ -195,6 +201,7 @@ function filterServiceShop() {
 function unfilterServiceShop() {
     $("#serviceShopList .jquery-service-shop").show();
 }
+
 /* service */
 
 /* detail service shop*/
