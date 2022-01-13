@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin thanh toán</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/shopStyle.css" />
+</head>
+
+<body class="txt bg-white-sub">
+    <!-- header -->
+    <div class="container-fluid border-grey-b bg-white sticky-top" onload="checkExistingLogin()">
+        <div class="row py-2">
+            <!-- Logo -->
+            <div class="col-lg-1 col-sm-2 d-flex border-pink-r align-items-center">
+                <a href="index.html" class="text-center w-100">
+                    <img src="https://i.imgur.com/WjN1HZX.png" alt="Logo" class="mx-auto w-75 h-auto" />
+                </a>
+            </div>
+            <!-- Nav bar -->
+            <div class="col-lg-11 col-sm-10">
+                <div class="row h-100 d-flex align-items-lg-center">
+                    <!-- Home, Shop, Service -->
+                    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="index.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-house-door"></i>
+                                    &nbsp; Trang chủ
+                                </a>
+                            </div>
+                            <div class="col border-pink-r btn-group py-1">
+                                <a href="shop_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-basket"></i>
+                                    &nbsp; Siêu thị
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="service_home_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-shop-window"></i>
+                                    &nbsp; Dịch vụ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Forum, Pet blog, My pet -->
+                    <div class="col-lg-4 col-sm-12 order-lg-2 order-sm-3">
+                        <div class="row">
+                            <div class="col border-pink-r py-1">
+                                <a href="forum_petOwner/html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-chat-right-text"></i>
+                                    &nbsp; Forum
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="petBlog_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-file-richtext"></i>
+                                    &nbsp; Pet Blog
+                                </a>
+                            </div>
+                            <div class="col border-pink-r py-1">
+                                <a href="myPet_petOwner.html" class="text-decoration-none txt-grey txt-hover-pink">
+                                    <i class="bi-journals"></i>
+                                    &nbsp; My Pet
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search, Account, setting -->
+                    <div class="col-lg-4 col-sm-12 order-lg-3 order-sm-1">
+                        <div class="row">
+                            <div class="col-2 text-center py-1">
+                                <button class="btn btn-white-sub w-100"><i class="bi-search"></i></button>
+                            </div>
+                            <div class="col-8 dropdown px-0 py-1" id="accountNav">
+                                <!-- Autofill with js -->
+                            </div>
+                            <div class="col-2 text-center dropdown py-1">
+                            <a href="cart_home.html">
+                                <button type="button" class="btn btn-white-sub w-10 0dropdown-toggle"
+                                    id="btnSettingGroup" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-cart"></i>
+                                <span class="cart_quantity" id="cart_quantity" style="">0</span>
+                            </button>
+                            </a>
+                            
+                            <!-- <ul class="dropdown-menu text-end" aria-labelledby="btnSettingGroup">
+                                <li><a class="dropdown-item" href="#">Trợ giúp & hỗ trợ</a></li>
+                                <li><a class="dropdown-item" href="#">Theo dõi Fan page</a></li>
+                                <li><a class="dropdown-item" href="#">Liên hệ báo lỗi / góp ý</a></li>
+                            </ul> -->
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="cart_container bg-white">
+        <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h3 style="margin: 10px 0 0 10px;">Thông tin giao hàng</h3>
+                <div class="shipping-method">
+                    <div class="method-inner">
+                        <div>
+                            <label class="checkout-method">
+                                <div class="row ml-1">
+                                    <input type="radio" data-view-id="checkout.shipping_method_select" data-view-index="11" readonly="" name="shipping-methods" value="11" checked="">
+                                    <span class="radio-fake"></span>
+                                    <span class="label">
+                                        <div><span class="method-name">
+                                                <img src="img/ghtk.png" width="56" alt=""> <span> Giao Hàng Tiết Kiệm</span></span>
+                                        </div>
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+                        <img class="method-inner__arrow" src="https://salt.tikicdn.com/ts/upload/05/9e/d8/f13e86df128f19d197397e44924f9616.png" width="32" height="12">
+                    </div>
+                    <div class="item">
+                        <div class="item-left">
+                            <ul class="checkout-products">
+                                <li class="product">
+                                    <div class="product__wrap">
+                                        <img src="https://cf.shopee.vn/file/507b2a54250774c9bd2a6367a6e52eda" alt="Royal cannin cho mèo (Túi 1kg)" class="product__img">
+                                        <div class="product__inner">
+                                            <p class="product__name">Royal cannin cho mèo (Túi 1kg)</p>
+                                            <p class="product__action"><span class="product__qty">SL: x1</span><span class="product__pri">110.000đ</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="includes-product"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item-right">
+                            <div class="heading ">
+                                <div class="heading__shipping-fee">
+                                    <div>Phí vận chuyển</div>
+                                    <div class="heading__shipping-fee--has-fee">29.000₫</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Chọn hình thức thanh toán</h3>
+                <div class="cart payment-method">
+                    <ul class="payment-lists">
+                        <div>
+                            <label class="checkout-method">
+                                <div class="row ml-1">
+                                    <input type="radio" data-view-id="checkout.payment_method_select" data-view-index="11" readonly="" name="payment-methods" value="11" checked="">
+                                    <span class="radio-fake"></span>
+                                    <div class="styles__StyledMethodLabel-sc-1u5r3pb-1 gkKrcB"><img class="method-icon" width="32" src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-cod.svg" alt="cod">
+                                        <div class="method-content">
+                                            <div class="method-content__name"><span>Thanh toán tiền mặt khi nhận hàng</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </ul>
+                </div>
+                <div class="order-button">
+                    <a href="đặt hàng thành công.html"><button data-view-id="checkout.confirmation_navigation_proceed" class="">ĐẶT MUA
+                        </button></a>
+                    <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="cart-total-prices">
+                    <div class="cart-total-prices__inner">
+                        <div class="shipping_address">
+                            <p class="heading">
+                                <span class="text">Giao tới</span>
+                            </p>
+                            <p class="title">
+                                <b class="name">Nguyen Thành Tâm</b>
+                                <b class="phone">0582387005</b>
+                            </p>
+                            <p class="address">449 Trần Hưng Đạo, Q1, Tp HCM</p>
+                        </div>
+                        <!-- <div class="styles__StyledWrapCoupons-sc-1d6idyr-0 ekRzNN">
+                            <div class="styles__StyledCouponBox-sc-1ibe03g-0 jmylnB">
+                                <div class="title-usage">
+                                    <p class="coupon-title">Hapi Pet khuyến mãi</p>
+                                    <input type="text" name="" placeholder="Nhập mã khuyến mãi">
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="order-summary">
+                            <div class="title">
+                                <div class="sub-title">
+                                    <b>Đơn hàng</b>
+                                    <p>1 sản phẩm.
+                                </div>
+                                <a data-view-id="checkout.confirmation_cart_order.change" href="cart_home.html">Sửa
+                                </a>
+                            </div>
+                            <div class="cart">
+                                <div class="price-summary">
+                                    <div class="price_info">
+                                        <div class="inner">
+                                            <div class="name ">Tạm tính</div>
+                                            <div class="value ">110.000đ</div>
+                                        </div>
+                                    </div>
+                                    <div class="price_info">
+                                        <div class="inner">
+                                            <div class="name ">Phí vận chuyển</div>
+                                            <div class="value ">29.000đ</div>
+                                        </div>
+                                    </div>
+                                    <div class="total">
+                                        <div class="name">Thành tiền:</div>
+                                        <div class="value">139.000 ₫<i>(Đã bao gồm VAT nếu có)</i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- footer -->
+    <div class="container-fluid border-grey-t bg-pink-sub-bg-login bg-footer-img mt-3">
+        <div class="row row-cols-1 px-lg-5 px-sm-3 mx-lg-5 mx-sm-4">
+            <div class="col-lg-3 col-sm-6 order-lg-1 order-sm-2 py-3 ps-lg-5 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Về chúng tôi</p>
+                <p><a href="gioithieu.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Giới thiệu Hapi Pet</a>
+                </p>
+                <p><a href="tuyendung.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Tuyển dụng nhân sự</a>
+                </p>
+                <p><a href="become_partner.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Trở thành đối tác</a>
+                </p>
+                <p><a href="chinhsach.html" class="text-decoration-none txt-bold txt-black txt-hover-pink">Chính sách thanh toán</a>
+                </p>
+            </div>
+            <div class="col-lg-6 col-sm-12 order-lg-2 order-sm-1 py-3 mt-3">
+                <p class="mt-lg-4 mt-sm-0 mb-0">
+                    Hapi Pet mang đến cho người dùng một cộng đồng những người yêu thích thú cưng. Ở đây các bạn có thể nhận
+                    được dịch vụ chăm sóc tốt nhất và cùng nhau chia sẻ những khoảnh khắc đáng nhớ về thú cưng của mình.
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 order-lg-3 order-sm-3 py-3 ps-lg-4 ps-sm-3 mt-3">
+                <p class="txt-bolder txt-lgx txt-pink mb-4">Liên hệ</p>
+                <p><a href="#" class="text-decoration-none txt-bold txt-black txt-hover-pink">Công ty Tâm Huyết Việt</a>
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-geo-alt txt-pink"></i>
+                    &nbsp; Trần Hưng Đạo, Q1, Tp HCM
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-telephone txt-pink"></i>
+                    &nbsp; 090 6979 xxx
+                </p>
+                <p class="text-decoration-none txt-bold txt-black txt-hover-shadow">
+                    <i class="bi-envelope txt-pink"></i>
+                    &nbsp; hapipet@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="row bg-grey px-5 py-2">
+            <p class="txt-bold txt-white mb-0">&copy;&nbsp; 2021&nbsp; Design by &nbsp;
+                <a href="#" class="text-decoration-none txt-white txt-hover-orange">Nguyen Thanh</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-teal">Do Nam</a>,
+                <a href="#" class="text-decoration-none txt-white txt-hover-yellow">Nguyen Tam</a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap.esm.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
