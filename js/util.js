@@ -174,9 +174,15 @@ function filterServiceShop() {
         return;
     }
 
-    for (let i = 1; i < $("#serviceShopList .jquery-service-shop").length; i++) {
+    let serviceShoplist = $("#serviceShopList .jquery-service-shop");
+    serviceShoplist.hide();
+
+    alert("vet : " + filterVet + "/n" +
+        "groom : " + filterGroom + "/n" +
+        "hotel : " + filterHotel + "/n")
+
+    for (let i = 1; i < serviceShoplist.length; i++) {
         let serviceShop = $("#serviceShop" + i);
-        serviceShop.hide();
 
         let serviceShopCategory = $("#serviceShop" + i + "Category");
 
@@ -195,6 +201,7 @@ function filterServiceShop() {
 function unfilterServiceShop() {
     $("#serviceShopList .jquery-service-shop").show();
 }
+
 /* service */
 
 /* detail service shop*/
@@ -290,8 +297,7 @@ const shops = {
         }, {
             name: "Xét nghiệm chó mèo",
             type: "vet",
-            desc: "Trung tâm xét nghiệm chó mèo Procare ra đời giúp việc chẩn đoán bệnh cho thú cưng để đưa ra phác đồ điều trị phù hợp nhất." +
-                "<br/>Bao gồm: Xét nghiệm nhanh phục vụ phẫu thuật. Xét nghiệm ký sinh trùng. Xét nghiệm máu sinh lý, sinh hóa. Xét nghiệm da soi ký sinh trùng, nấm…",
+            desc: "Trung tâm xét nghiệm chó mèo Procare ra đời giúp việc chẩn đoán bệnh cho thú cưng để đưa ra phác đồ điều trị phù hợp nhất. \nBao gồm: Xét nghiệm nhanh phục vụ phẫu thuật. Xét nghiệm ký sinh trùng. Xét nghiệm máu sinh lý, sinh hóa. Xét nghiệm da soi ký sinh trùng, nấm…",
             img: "https://thuyprocare.com/upload/images/X%C3%89T%20NGHI%E1%BB%86M/trung-tam-xet-nghiem-cho-meo.jpg",
             price: "Từ 100.000 đ / 1 lượt"
         }, {
@@ -384,7 +390,7 @@ const shops = {
         }, {
             name: "Spa làm đẹp",
             type: "groom",
-            desc: "Spa cao cấp cho các bé, đảm bảo thư giãn thoải mái. Gồm 2 gói: Ddaayfddur, cơ bản",
+            desc: "Spa cao cấp cho các bé, đảm bảo thư giãn thoải mái. Gồm 2 gói: Đầy đủ, cơ bản",
             img: "https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/abxbflu/2014_08_13/bnsi12_2.jpg",
             price: "200.000 - 300.000/lượt"
         }, {
@@ -411,7 +417,6 @@ const shops = {
         }]
     }
 };
-
 let shop;
 
 function selectAllService() {

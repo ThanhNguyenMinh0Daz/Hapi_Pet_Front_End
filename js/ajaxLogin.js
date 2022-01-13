@@ -21,7 +21,7 @@ function ajaxLoginPhone() {
     $.ajax("http://localhost:9090/account/owner", {method: "GET", data: {phone: phoneNum, otp: otpNum}})
         .done(function (data) {
             if (data.status === "success") {
-                localStorage.setItem("account", JSON.stringify(data.data));
+                window.localStorage.setItem("account", JSON.stringify(data.data));
                 /*Lưu vào localStorage (xóa sau x ngày chưa vô lại (Cần hỏi business rule))*/
                 window.location.replace("index.html");
                 /*Login xong xóa luôn, khỏi back về login*/

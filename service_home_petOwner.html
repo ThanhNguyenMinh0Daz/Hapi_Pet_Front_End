@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
-<body class="txt bg-white-sub" onload="checkExistingLogin()">
+<body class="txt bg-white-sub" onload="checkExistingLogin(); fillServiceHome()">
 
 <!-- header -->
 <div class="container-fluid border-grey-b bg-white sticky-top">
@@ -173,33 +173,41 @@
                     <!-- filter -->
                     <div class="row pb-3 border-grey-b">
 
-                        <div class="col-lg-3 col-sm-6 mt-3"
-                             onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom'); btnPinkUnfocus('serviceHotel'); unfilterServiceShop()">
-                            <button class="btn btn-pink txt-sm w-100" id="serviceAll"
-                                    onclick="btnPinkFocus('serviceAll')">
-                                Tất cả
-                            </button>
+                        <div class="col-lg-3 col-sm-6 mt-3">
+                            <div onclick="btnPinkUnfocus('serviceVet'); btnPinkUnfocus('serviceGroom');
+                                    btnPinkUnfocus('serviceHotel'); unfilterServiceShop()">
+                                <button class="btn btn-pink w-100" id="serviceAll"
+                                        onclick="btnPinkFocus('serviceAll'); ">
+                                    Tất cả
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceVet"
-                                    onclick="btnPinkFocus('serviceVet')">
-                                Thú y
-                            </button>
+                        <div class="col-lg-3 col-sm-6 mt-3">
+                            <div onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                                <button class="btn btn-pink-sub border-pink w-100" id="serviceVet"
+                                        onclick="btnPinkFocus('serviceVet')">
+                                    Thú y
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceGroom"
-                                    onclick="btnPinkFocus('serviceGroom')">
-                                Grooming-spa
-                            </button>
+                        <div class="col-lg-3 col-sm-6 mt-3">
+                            <div onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                                <button class="btn btn-pink-sub border-pink w-100" id="serviceGroom"
+                                        onclick="btnPinkFocus('serviceGroom')">
+                                    Grooming-spa
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="col-lg-3 col-sm-6 mt-3" onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
-                            <button class="btn btn-pink-sub border-pink txt-sm w-100" id="serviceHotel"
-                                    onclick="btnPinkFocus('serviceHotel')">
-                                Khách sạn
-                            </button>
+                        <div class="col-lg-3 col-sm-6 mt-3">
+                            <div onclick="btnPinkUnfocus('serviceAll'); filterServiceShop()">
+                                <button class="btn btn-pink-sub border-pink w-100" id="serviceHotel"
+                                        onclick="btnPinkFocus('serviceHotel')">
+                                    Khách sạn
+                                </button>
+                            </div>
                         </div>
 
                     </div>
@@ -207,24 +215,23 @@
                     <!-- service list -->
                     <div class="row" id="serviceShopList">
 
-                        <!-- service 1 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop1">
+                        <!-- service demo -->
+                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop0" hidden="hidden">
                             <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=CSCHHCM"
+                                <a href="serviceShop_detail.html?shopID=shopID"
                                    class="text-decoration-none txt-black txt-hover-black">
                                     <div class="square-wrapper border-grey-sub-b">
                                         <div class="fill-wrapper">
-                                            <img src="https://giuchomeo.com/wp-content/uploads/2021/02/IMG_20210130_130947_756-scaled.jpg"
-                                                 alt="img" class="w-100 h-100 img-cover rounded-top">
+                                            <img src="shopImgLink" alt="img" class="w-100 h-100 img-cover rounded-top">
                                         </div>
                                     </div>
 
                                     <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; Trông Giữ Chó Mèo HCM
+                                        <i class="bi-shop-window"></i>&nbsp; shopName
                                     </p>
 
                                     <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 338/3/2 Nơ Trang Long, P.13, Bình Thạnh, TP.HCM
+                                        <i class="bi-geo-alt"></i>&nbsp; shopAddress
                                     </p>
 
                                     <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
@@ -233,254 +240,28 @@
                                         <i class="bi-star-fill"></i>
                                         <i class="bi-star-fill"></i>
                                         <i class="bi-star-fill"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
+                                        <!-- 3 icon: bi-star (rỗng) ; bi-star-half (nửa) ; bi-star-fill (đủ)-->
+                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; reviewList.size()</i>
                                     </p>
 
-                                    <div class="row txt-bold mx-0 mb-2 jquery-service-hotel" id="serviceShop1Category">
-
+                                    <div class="row txt-bold mx-0 mb-2 " id="serviceShop0Category">
+                                        <!-- Nếu có category thì thêm không thì thôi -->
                                         <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">
-                                                <i class="bi-building"></i>&nbsp; Hotel
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">-->
-                                            <!--                                                <i class="bi-plus-circle"></i>&nbsp; Vet-->
-                                            <!--                                            </p>-->
+                                            <!--<p class="txt-sm text-center rounded border-pink py-1 mb-0">-->
+                                            <!--    <i class="bi-plus-circle"></i>&nbsp; Vet-->
+                                            <!--</p>-->
                                         </div>
 
                                         <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">-->
-                                            <!--                                                <i class="bi-scissors"></i>&nbsp; Groom-->
-                                            <!--                                            </p>-->
-                                        </div>
-
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 2 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop2">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=PKTHYVietpet"
-                                   class="text-decoration-none txt-black txt-hover-black">
-                                    <div class="square-wrapper border-grey-sub-b">
-                                        <div class="fill-wrapper">
-                                            <img src="https://lh3.googleusercontent.com/p/AF1QipPN0ZkZb5UPre_JJx0SEK9uWA2sH9iQfNplk5BI=w1080-h608-p-no-v0"
-                                                 alt="img"
-                                                 class="w-100 h-100 img-cover rounded-top">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; Phòng Khám Thú Y Vietpet
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 247 Lê Quang Định, P.7, Bình Thạnh, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
-                                    </p>
-
-                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet" id="serviceShop2Category">
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">
-                                                <i class="bi-plus-circle"></i>&nbsp; Vet
-                                            </p>
+                                            <!--<p class="txt-sm text-center rounded border-teal py-1 mb-0">-->
+                                            <!--    <i class="bi-scissors"></i>&nbsp; Groom-->
+                                            <!--</p>-->
                                         </div>
 
                                         <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">-->
-                                            <!--                                                <i class="bi-scissors"></i>&nbsp; Groom-->
-                                            <!--                                            </p>-->
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">-->
-                                            <!--                                                <i class="bi-building"></i>&nbsp; Hotel-->
-                                            <!--                                            </p>-->
-                                        </div>
-
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 3 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=TYProCare"
-                                   class="text-decoration-none txt-black txt-hover-black">
-                                    <div class="square-wrapper border-grey-sub-b">
-                                        <div class="fill-wrapper">
-                                            <img src="https://thuyprocare.com/upload/images/GI%E1%BB%9AI%20THI%E1%BB%86U/Ph%C3%B2ng-kh%C3%A1m-th%C3%BA-y-procare.jpg"
-                                                 alt="img"
-                                                 class="w-100 h-100 img-cover rounded-top">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; THÚ Y PROCARE
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 98C Phan Đăng Lưu, P.3, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-half"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
-                                    </p>
-
-                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom" id="serviceShop3Category">
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">
-                                                <i class="bi-plus-circle"></i>&nbsp; Vet
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">
-                                                <i class="bi-scissors"></i>&nbsp; Groom
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <!--                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">-->
-                                            <!--                                                <i class="bi-building"></i>&nbsp; Hotel-->
-                                            <!--                                            </p>-->
-                                        </div>
-
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 4 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop4">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=DRBullSpa"
-                                   class="text-decoration-none txt-black txt-hover-black">
-                                    <div class="square-wrapper border-grey-sub-b">
-                                        <div class="fill-wrapper">
-                                            <img src="https://lh5.googleusercontent.com/p/AF1QipM-Yf4L_9pICC2z8yeTLrDhpmWB73Boyn2JLvE6=w426-h240-k-no"
-                                                 alt="img"
-                                                 class="w-100 h-100 img-cover rounded-top">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; DR BULL SPA
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 205 Nguyễn Cư Trinh, P.Nguyễn Cư Trinh, Q.1,
-                                        TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (4 đánh giá)</i>
-                                    </p>
-
-                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom jquery-service-hotel"
-                                         id="serviceShop4Category">
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">
-                                                <i class="bi-plus-circle"></i>&nbsp; Vet
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">
-                                                <i class="bi-scissors"></i>&nbsp; Groom
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">
-                                                <i class="bi-building"></i>&nbsp; Hotel
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 5 -->
-                        <div class="col-lg-4 col-sm-6 mt-3 jquery-service-shop" id="serviceShop5">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=PPetHotelASpa"
-                                   class="text-decoration-none txt-black txt-hover-black">
-                                    <div class="square-wrapper border-grey-sub-b">
-                                        <div class="fill-wrapper">
-                                            <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/abxbflu/2014_08_13/pbmt01.jpg"
-                                                 alt="img"
-                                                 class="w-100 h-100 img-cover rounded-top">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; PPet hotel & spa
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 172 Hoa Lan, P.2, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink border-grey-sub-b px-2 pb-2 mb-0">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (2 đánh giá)</i>
-                                    </p>
-
-                                    <div class="row txt-bold mx-0 mb-2 jquery-service-vet jquery-service-groom jquery-service-hotel"
-                                         id="serviceShop5Category">
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-pink py-1 mb-0">
-                                                <i class="bi-plus-circle"></i>&nbsp; Vet
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-teal py-1 mb-0">
-                                                <i class="bi-scissors"></i>&nbsp; Groom
-                                            </p>
-                                        </div>
-
-                                        <div class="col-4 mt-2">
-                                            <p class="txt-sm text-center rounded border-yellow py-1 mb-0">
-                                                <i class="bi-building"></i>&nbsp; Hotel
-                                            </p>
+                                            <!--<p class="txt-sm text-center rounded border-yellow py-1 mb-0">-->
+                                            <!--    <i class="bi-building"></i>&nbsp; Hotel-->
+                                            <!--</p>-->
                                         </div>
 
                                     </div>
@@ -566,6 +347,7 @@
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxService.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/bootstrap.esm.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
