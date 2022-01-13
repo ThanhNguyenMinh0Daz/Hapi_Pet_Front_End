@@ -23,10 +23,14 @@ Luật dùng style:
 @import "bootstrap-utilities.rtl.css";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
 /* ========== bootstrap ========== */
+
 /* ========== font ========== */
 @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
 /* ========== font ========== */
 
+/* ========== etc ========== */
+@import "nameStyle.css";
+/* ========== etc ========== */
 /* ==================== IMPORT ====================================================================================== */
 
 

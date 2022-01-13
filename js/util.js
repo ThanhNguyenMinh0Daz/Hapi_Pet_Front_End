@@ -20,61 +20,6 @@ function btnPinkToggle(idOld, idNew) {
         .attr("onclick", "");
 }
 
-function filterService() {
-    let filterVet = $("#serviceVet").hasClass("btn-pink");
-    let filterGroom = $("#serviceGroom").hasClass("btn-pink");
-    let filterHotel = $("#serviceHotel").hasClass("btn-pink");
-
-    if (filterVet && filterGroom && filterHotel) {
-        unfilterService();
-        btnPinkFocus('serviceAll');
-        btnPinkUnfocus('serviceVet');
-        btnPinkUnfocus('serviceGroom');
-        btnPinkUnfocus('serviceHotel');
-        return;
-    }
-
-    for (let i = 1; i < 6; i++) {
-        $("#service" + i).hide();
-    }
-
-    if (filterVet) {
-        $("#service2").show();
-        $("#service3").show();
-        $("#service4").show();
-        $("#service5").show();
-    }
-
-    if (filterGroom) {
-        $("#service3").show();
-        $("#service4").show();
-        $("#service5").show();
-    }
-
-    if (filterHotel) {
-        $("#service1").show();
-        $("#service3").show();
-        $("#service5").show();
-    }
-}
-
-function unfilterService() {
-    for (let i = 1; i < 6; i++) {
-        $("#service" + i).show();
-    }
-}
-
-function btnPinkFocus(id) {
-    $("#" + id).removeClass("btn-pink-sub border-pink")
-        .addClass("btn-pink")
-        .attr("onclick", "btnPinkUnfocus('" + id + "')");
-}
-
-function btnPinkUnfocus(id) {
-    $("#" + id).removeClass("btn-pink")
-        .addClass("btn-pink-sub border-pink")
-        .attr("onclick", "btnPinkFocus('" + id + "')");
-}
 
 function orderServiceListNew() {
     for (let i = 1; i < 6; i++) {
@@ -101,18 +46,19 @@ let accountString = window.localStorage.getItem("account");
 
 function logout() {
     window.localStorage.removeItem("account");
+    window.location.reload();
 }
 
 function fillLoginRegister(nav) {
     nav.append(
         "<div class='row m-0'>\n" +
         "   <div class='col-6 text-center'>\n" +
-        "       <a href='login_petOwner_ajax.html' class='btn btn-pink w-100'>\n" +
+        "       <a href='login_petOwner.html' class='btn btn-pink w-100'>\n" +
         "           Đăng nhập\n" +
         "       </a>\n" +
         "   </div>\n" +
         "   <div class='col-6 text-center'>\n" +
-        "       <a href='login_petOwner_ajax.html' class='btn btn-teal w-100'>\n" +
+        "       <a href='login_petOwner.html' class='btn btn-teal w-100'>\n" +
         "           Đăng ký\n" +
         "       </a>\n" +
         "   </div>\n" +
@@ -174,9 +120,13 @@ function maxDateCurrentDate(id) {
     let date = new Date();
 
     let day = date.getDate();
-    if (day < 10) { day = "0" + day; }
+    if (day < 10) {
+        day = "0" + day;
+    }
     let month = date.getMonth();
-    if (month < 10) { month = "0" + month; }
+    if (month < 10) {
+        month = "0" + month;
+    }
     let year = date.getFullYear();
 
     $("#" + id).attr("max", day + "-" + month + "-" + year);
@@ -184,8 +134,7 @@ function maxDateCurrentDate(id) {
 
 /* account */
 
-/* detail service shop*/
-
+/* service */
 const symbols = {
     vet: "bi-plus-circle",
     groom: "bi-scissors",
@@ -197,6 +146,65 @@ const borders = {
     groom: "border-teal-b",
     hotel: "border-yellow-b"
 };
+
+function btnPinkFocus(id) {
+    $("#" + id).removeClass("btn-pink-sub border-pink")
+        .addClass("btn-pink")
+        .attr("onclick", "btnPinkUnfocus('" + id + "')");
+}
+
+function btnPinkUnfocus(id) {
+    $("#" + id).removeClass("btn-pink")
+        .addClass("btn-pink-sub border-pink")
+        .attr("onclick", "btnPinkFocus('" + id + "')");
+}
+
+function filterServiceShop() {
+    let filterVet = $("#serviceVet").hasClass("btn-pink");
+    let filterGroom = $("#serviceGroom").hasClass("btn-pink");
+    let filterHotel = $("#serviceHotel").hasClass("btn-pink");
+
+    if (filterVet && filterGroom && filterHotel) {
+        /* chọn cả 3 = chọn hết */
+        unfilterServiceShop();
+        btnPinkFocus('serviceAll');
+        btnPinkUnfocus('serviceVet');
+        btnPinkUnfocus('serviceGroom');
+        btnPinkUnfocus('serviceHotel');
+        return;
+    }
+
+    let serviceShoplist = $("#serviceShopList .jquery-service-shop");
+    serviceShoplist.hide();
+
+    alert("vet : " + filterVet + "/n" +
+        "groom : " + filterGroom + "/n" +
+        "hotel : " + filterHotel + "/n")
+
+    for (let i = 1; i < serviceShoplist.length; i++) {
+        let serviceShop = $("#serviceShop" + i);
+
+        let serviceShopCategory = $("#serviceShop" + i + "Category");
+
+        if (filterVet) {
+            serviceShopCategory.hasClass("jquery-service-vet") ? serviceShop.show() : null;
+        }
+        if (filterGroom) {
+            serviceShopCategory.hasClass("jquery-service-groom") ? serviceShop.show() : null;
+        }
+        if (filterHotel) {
+            serviceShopCategory.hasClass("jquery-service-hotel") ? serviceShop.show() : null;
+        }
+    }
+}
+
+function unfilterServiceShop() {
+    $("#serviceShopList .jquery-service-shop").show();
+}
+
+/* service */
+
+/* detail service shop*/
 
 const shops = {
     CSCHHCM: {
@@ -289,8 +297,7 @@ const shops = {
         }, {
             name: "Xét nghiệm chó mèo",
             type: "vet",
-            desc: "Trung tâm xét nghiệm chó mèo Procare ra đời giúp việc chẩn đoán bệnh cho thú cưng để đưa ra phác đồ điều trị phù hợp nhất." +
-                "<br/>Bao gồm: Xét nghiệm nhanh phục vụ phẫu thuật. Xét nghiệm ký sinh trùng. Xét nghiệm máu sinh lý, sinh hóa. Xét nghiệm da soi ký sinh trùng, nấm…",
+            desc: "Trung tâm xét nghiệm chó mèo Procare ra đời giúp việc chẩn đoán bệnh cho thú cưng để đưa ra phác đồ điều trị phù hợp nhất. \nBao gồm: Xét nghiệm nhanh phục vụ phẫu thuật. Xét nghiệm ký sinh trùng. Xét nghiệm máu sinh lý, sinh hóa. Xét nghiệm da soi ký sinh trùng, nấm…",
             img: "https://thuyprocare.com/upload/images/X%C3%89T%20NGHI%E1%BB%86M/trung-tam-xet-nghiem-cho-meo.jpg",
             price: "Từ 100.000 đ / 1 lượt"
         }, {
@@ -323,8 +330,7 @@ const shops = {
         img: ["https://lh5.googleusercontent.com/p/AF1QipM-Yf4L_9pICC2z8yeTLrDhpmWB73Boyn2JLvE6=w426-h240-k-no",
             "https://drbull.vn/wp-content/uploads/2019/05/2020-10-08-15_20_13.4910700-e1602145934929-1024x986.jpg",
             "https://drbull.vn/wp-content/uploads/2017/09/vet4-1024x661.jpg"],
-        desc: "Dr. Bull là thương hiệu thú y và dịch vụ chăm sóc chất lượng cao cho chó mèo, tọa lạc tại vị trí trung tâm quận 1. Với phương châm chất lượng phục vụ đi đầu, cùng đội ngũ y bác sỹ và nhân viên đầy tâm huyết phục vụ nhu cầu toàn diện cho đối tượng khách hàng yêu thú cưng tại Tp HCM.\n" +
-            "Đến với Dr. Bull các bé cưng của bạn sẽ được thăm khám tận tình bởi các bác sỹ chuyên môn cao dựa trên hồ sơ cá nhân hóa của từng bé. Chủ của các bé sẽ được tư vấn trước về phương pháp điều trị cũng như chi phí trước khi phối hợp cùng chúng tôi tiến hành điều trị nhằm mang lại kết quả hoàn hảo nhất.",
+        desc: "Dr. Bull là thương hiệu thú y và dịch vụ chăm sóc chất lượng cao cho chó mèo, tọa lạc tại vị trí trung tâm quận 1. Với phương châm chất lượng phục vụ đi đầu, cùng đội ngũ y bác sỹ và nhân viên đầy tâm huyết phục vụ nhu cầu toàn diện cho đối tượng khách hàng yêu thú cưng tại Tp HCM. Đến với Dr. Bull các bé cưng của bạn sẽ được thăm khám tận tình bởi các bác sỹ chuyên môn cao dựa trên hồ sơ cá nhân hóa của từng bé. Chủ của các bé sẽ được tư vấn trước về phương pháp điều trị cũng như chi phí trước khi phối hợp cùng chúng tôi tiến hành điều trị nhằm mang lại kết quả hoàn hảo nhất.",
         serviceOffer: ["vet", "groom", "hotel"],
         services: [{
             name: "Triệt sản mèo",
@@ -384,7 +390,7 @@ const shops = {
         }, {
             name: "Spa làm đẹp",
             type: "groom",
-            desc: "Spa cao cấp cho các bé, đảm bảo thư giãn thoải mái. Gồm 2 gói: Ddaayfddur, cơ bản",
+            desc: "Spa cao cấp cho các bé, đảm bảo thư giãn thoải mái. Gồm 2 gói: Đầy đủ, cơ bản",
             img: "https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/abxbflu/2014_08_13/bnsi12_2.jpg",
             price: "200.000 - 300.000/lượt"
         }, {
@@ -411,7 +417,6 @@ const shops = {
         }]
     }
 };
-
 let shop;
 
 function selectAllService() {
@@ -607,6 +612,10 @@ function fillServiceShopDetail(paramsString) {
 }
 
 function moveToReservation(shop) {
-    window.location.href = "reservation_petOwner.html?shop="+shop;
+    window.location.href = "reservation_petOwner.html?shop=" + shop;
     return;
+}
+
+function fillProductDetail{
+    
 }
