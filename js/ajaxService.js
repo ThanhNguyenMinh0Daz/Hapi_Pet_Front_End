@@ -7,6 +7,17 @@
 *        status: ...}
 * */
 
+
+const vietSpeciesName = {
+    Unknown: "Không biết",
+    Dog: "Chó",
+    Cat: "Mèo",
+    Bird: "Chim",
+    Fish: "Cá",
+    Hamster: "Chuột Hamster",
+    Rabbit: "Thỏ"
+};
+
 /* MENU */
 function ajaxGetAllServiceShop() {
     $.ajax("http://localhost:9090/shop/all/serviceShop",
@@ -779,7 +790,6 @@ function fillServiceShopDetail(paramsString) {
 function ajaxSendReview() {
 }
 
-
 /* Reservation */
 function fillReservationDetail(paramsString) {
     let params = new URLSearchParams(paramsString);
@@ -789,8 +799,7 @@ function fillReservationDetail(paramsString) {
 
     let account = JSON.parse(accountString);
 
-    let serviceShopDTOString = ajaxGetServiceShopByShopID(params.get("shopID"));
-    let serviceShopDTO = JSON.parse(serviceShopDTOString);
+    let serviceShopDTO = JSON.parse(ajaxGetServiceShopByShopID(params.get("shopID")));
 
     let serviceIDList = JSON.parse(decodeURIComponent(params.get("serviceIDList")));
 
@@ -805,8 +814,10 @@ function fillReservationDetail(paramsString) {
     let serviceHolder = $("#serviceHolder");
     let tmp = 0;
 
+    /* fill service */
     for (let serviceDTO of serviceDTOList) {
         if (serviceIDList.includes(serviceDTO.service.serviceID)) {
+            /*numbering*/
             tmp++;
             let bookingDetailNo =
                 $("<div>").addClass("row border-teal-b align-items-center txt-lg mx-0")
@@ -815,16 +826,17 @@ function fillReservationDetail(paramsString) {
                             .append(
                                 $("<p>").addClass("txt-teal txt-bold mb-0")
                                     .append("Dịch vụ " + tmp)))
-                    .append(
+                    /*.append(
                         $("<div>").addClass("col-1 btn btn-pink rounded-0")
                             .attr("onClick", "hideItem('service" + tmp + "')")
                             .attr("id", "close" + tmp)
                             .append(
-                                $("<i>").addClass("bi-x-lg")));
+                                $("<i>").addClass("bi-x-lg")))*/;
 
-            let select =
+            /*select service*/
+            let selectService =
                 $("<select>").addClass("rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2")
-                    .attr("name", "serviceChoose");
+                    .attr("name", "serviceChoose" + tmp);
             for (let tmpDTO of serviceDTOList) {
                 let option =
                     $("<option>").attr("value", tmpDTO.service.serviceID)
@@ -835,9 +847,60 @@ function fillReservationDetail(paramsString) {
                     option.attr("selected", "selected");
                 }
 
-                select.append(option);
+                selectService.append(option);
             }
 
+            /*select pet*/
+            let selectPetSegment =
+                $("<div>").addClass("row mt-1 align-items-center")
+                    .attr("id", "service" + tmp + "petChoose");
+            let btnNewPet =
+                $("<button>").addClass("btn btn-teal w-100")
+                    .append("Thêm bé");
+            let petDTOList = JSON.parse(ajaxGetPet(account.accountID));
+            if (petDTOList !== null && petDTOList.length > 0) {
+                let petList =
+                    $("<select>").addClass("rounded border-grey w-100 bg-white-sub py-1 px-2");
+
+                for (let petDTO of petDTOList) {
+                    petList.append(
+                        $("<option>").attr("value", petDTO.petID)
+                            .append(vietSpeciesName[petDTO.species.speciesName] + " - " + petDTO.pet.petName)
+                    );
+                }
+
+                btnNewPet.attr("type", "button")
+                    .attr("onclick", "chooseNewPet('service" + tmp + "petChoose', " + tmp + ")");
+
+                selectPetSegment.append(
+                    $("<div>").addClass("col-9")
+                        .attr("id", "petChoose" + tmp + "-1")
+                        .append(petList));
+            } else {
+                let message =
+                    $("<div>").addClass("col-7")
+                        .append(
+                            $("<p>").addClass("txt-bold txt-pink mb-0")
+                                .append("Bạn chưa có bé nào.<br/>Bạn cần ít nhất 1 bé để đặt dịch vụ"));
+
+                let btnRefresh =
+                    $("<div>").addClass("col-2")
+                        .append(
+                            $("<button>").addClass("btn btn-orange w-100")
+                                .attr("onclick", "refreshPetList('" + account.accountID + "', '" + paramsString + "')")
+                                .append($("<i>").addClass("bi-arrow-clockwise")));
+
+                selectPetSegment.append(message)
+                    .append(btnRefresh);
+
+                btnNewPet.attr("onclick", "window.open('myPet_petOwner.html')");
+            }
+            selectPetSegment.append(
+                $("<div>").addClass("col-3")
+                    .append(btnNewPet)
+                    .append($("<input>").attr("type", "hidden").val(1)));
+
+            /*book datetime*/
             let bookDatetime =
                 $("<div>").addClass("col-12 mt-2")
                     .append(
@@ -864,6 +927,7 @@ function fillReservationDetail(paramsString) {
                                             .val(getCurrentDateTimestampString() + "T22:00:00"))));
 
 
+            /*problem & note*/
             let problemNote =
                 $("<div>").addClass("col-12 mt-2")
                     .append(
@@ -875,6 +939,7 @@ function fillReservationDetail(paramsString) {
                             .attr("placeholder", "Vấn đề của bạn")
                             .attr("style", "resize: none;"));
 
+            /*final*/
             let bookingDetail =
                 $("<div>").addClass("col-12 mt-3")
                     .attr("id", "service" + tmp)
@@ -889,9 +954,15 @@ function fillReservationDetail(paramsString) {
                                                 $("<label>").addClass("txt-bold txt-black")
                                                     .append("Dịch vụ muốn đặt")
                                             )
-                                            .append(select)
+                                            .append(selectService)
                                     )
-                                    .append()
+                                    .append(
+                                        $("<div>").addClass("col-12 mt-2")
+                                            .append(
+                                                $("<label>").addClass("txt-bold txt-black")
+                                                    .append("Bạn đặt cho bé nào")
+                                            )
+                                            .append(selectPetSegment))
                                     .append(bookDatetime)
                                     .append(problemNote)));
 
@@ -899,12 +970,101 @@ function fillReservationDetail(paramsString) {
         }
     }
 
-    serviceHolder.append(
-        $("<div>").addClass("col-12 mt-3")
+    // serviceHolder.append(
+    //     $("<div>").addClass("col-12 mt-3")
+    //         .append(
+    //             $("<button>").addClass("btn btn-teal w-100")
+    //                 .attr("onclick", "")
+    //                 .append("Thêm dịch vụ")
+    //         )
+    // )
+}
+
+function refreshPetList(accountID, paramsString) {
+    let petDTOList = JSON.parse(ajaxGetPet(accountID));
+
+    if (petDTOList !== null && petDTOList.length > 0) {
+        $("#serviceHolder").html("");
+        fillReservationDetail(paramsString)
+    }
+}
+
+function chooseNewPet(selectPetSegmentID, tmp) {
+    let selectPetSegment = $("#" + selectPetSegmentID);
+
+
+    let listNoHidden = $("#" + selectPetSegmentID + " input[type='hidden']");
+    let listNo = parseInt(listNoHidden.val()) + 1;
+    listNoHidden.val(listNo);
+
+    let petList =
+        $("<select>").addClass("rounded border-grey w-100 bg-white-sub py-1 px-2");
+
+    let petDTOList = JSON.parse(window.sessionStorage.getItem("petDTOList"));
+
+    if (listNo >= petDTOList.length) {
+        $("#" + selectPetSegmentID + " button.btn-teal").attr("disabled", "disabled");
+    }
+
+    let selectedList = new Set();
+    for (let i = 1; i < listNo; i++) {
+        selectedList.add($("#" + selectPetSegmentID + " div[id='petChoose" + tmp + "-" + i + "'] select").val());
+    }
+
+    for (let petDTO of petDTOList) {
+        let selected = false;
+        if (!selected && !selectedList.has(petDTO.petID)) {
+            petList.append(
+                $("<option>").attr("value", petDTO.petID)
+                    .attr("selected", "selected")
+                    .append(vietSpeciesName[petDTO.species.speciesName] + " - " + petDTO.pet.petName));
+        } else {
+            petList.append(
+                $("<option>").attr("value", petDTO.petID)
+                    .append(vietSpeciesName[petDTO.species.speciesName] + " - " + petDTO.pet.petName));
+        }
+    }
+
+    let btnRemovePetChoose =
+        $("<div>").addClass("col-3 mt-2")
+            .attr("id", "petChooseBtn" + tmp + "-" + listNo)
             .append(
-                $("<button>").addClass("btn btn-teal w-100")
-                    .attr("onclick", "")
-                    .append("Thêm dịch vụ")
-            )
-    )
+                $("<button>").addClass("btn btn-pink w-100")
+                    .append($("<i>").addClass("bi-x-lg"))
+                    .attr("onclick", "removeChooseNewPet('" + selectPetSegmentID + "', " +
+                        "'petChoose" + tmp + "-" + listNo + "', 'petChooseBtn" + tmp + "-" + listNo + "')"));
+
+    selectPetSegment.append(
+        $("<div>").addClass("col-9 mt-2")
+            .attr("id", "petChoose" + tmp + "-" + listNo)
+            .append(petList))
+        .append(btnRemovePetChoose);
+}
+
+function removeChooseNewPet(selectPetSegmentID, selectPetID, selectPetRemoveBtnID) {
+    let listNoHidden = $("#" + selectPetSegmentID + " input[type='hidden']");
+    let listNo = parseInt(listNoHidden.val()) - 1;
+    listNoHidden.val(listNo);
+
+    let petDTOList = JSON.parse(window.sessionStorage.getItem("petDTOList"));
+
+    if (listNo < petDTOList.length) {
+        $("#" + selectPetSegmentID + " button.btn-teal").removeAttr("disabled");
+    }
+
+    $("#" + selectPetID).remove();
+    $("#" + selectPetRemoveBtnID).remove();
+}
+
+function moveToReservationComplete(paramsString) {
+    let params = new URLSearchParams(paramsString);
+    window.location.replace("datLichThanhCong.html?shopID=" + params.get("shopID"));
+}
+
+function fillReservationCompletePage(paramsString) {
+    let params = new URLSearchParams(paramsString);
+
+    let serviceShopDTO = JSON.parse(ajaxGetServiceShopByShopID(params.get("shopID")));
+
+    $("#reserveShopName").append(serviceShopDTO.shop.shopName)
 }

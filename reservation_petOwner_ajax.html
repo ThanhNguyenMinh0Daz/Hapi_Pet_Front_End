@@ -59,7 +59,9 @@
                 </div>
             </div>
 
+            <!-- service list -->
             <div class="row mt-2 px-3 border-pink-b pb-3" id="serviceHolder">
+
                 <div class="col-12">
                     <p class="txt-bold txt-lgx txt-orange text-center mb-0">Chi tiết</p>
                 </div>
@@ -97,9 +99,8 @@
                                 <label class="txt-bold txt-black">Bạn đặt cho bé nào</label>
                                 <div class="row mt-1 align-items-center">
 
-                                    <div class="col-6">
-                                        <select name="petChoose"
-                                                class="rounded border-grey w-100 bg-white-sub py-1 px-2">
+                                    <div class="col-9">
+                                        <select class="rounded border-grey w-100 bg-white-sub py-1 px-2">
                                             <option value="pet1">Mèo - Casper</option>
                                             <option value="pet2">Chó - Cậu Vàng</option>
                                             <option value="pet3">Mèo - Mimi</option>
@@ -108,10 +109,6 @@
 
                                     <div class="col-3">
                                         <button class="btn btn-teal w-100">Thêm bé</button>
-                                    </div>
-
-                                    <div class="col-3">
-                                        <button class="btn btn-orange w-100">Điền tay</button>
                                     </div>
 
                                 </div>
@@ -147,17 +144,13 @@
                     </div>
                 </div>
 
-<!--                <div class="col-12 mt-3">-->
-<!--                    <button class="btn btn-teal w-100" onclick="showItem('service2'); showItem('close1')">-->
-<!--                        Thêm dịch vụ-->
-<!--                    </button>-->
-<!--                </div>-->
-
             </div>
 
             <div class="row px-3">
                 <div class="col-12 mt-3">
-                    <a href="datLichThanhCong.html" class="btn btn-pink w-100 txt-bold txt-lg">Gửi đặt lịch</a>
+                    <button class="btn btn-pink w-100 txt-bold txt-lg"
+                            onclick="moveToReservationComplete(window.location.search)">Gửi đặt lịch
+                    </button>
                 </div>
             </div>
         </div>
@@ -170,6 +163,7 @@
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxPet.js"></script>
 <script type="text/javascript" src="js/ajaxService.js"></script>
 </body>
 </html>

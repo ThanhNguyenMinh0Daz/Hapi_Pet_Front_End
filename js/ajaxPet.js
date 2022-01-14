@@ -176,6 +176,10 @@ function insertPet() {
         isDeleted: false
     };
 
+    if (pet.chipNumber.length <= 0) {
+        pet.chipNumber = null
+    }
+
     ajaxInsertPet(pet);
 }
 
@@ -209,6 +213,10 @@ function updatePet(i) {
                 wantToDonate: false,
                 isDeleted: false
             };
+            if (pet.chipNumber.length <= 0) {
+                pet.chipNumber = null
+            }
+
             petDTOList[i].pet = pet;
 
             ajaxUpdatePet(petDTOList[i]);
