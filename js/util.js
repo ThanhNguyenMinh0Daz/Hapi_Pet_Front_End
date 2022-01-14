@@ -616,6 +616,9 @@ function moveToReservation(shop) {
     return;
 }
 
-function fillProductDetail{
-    
+function getImgOnLoad(){
+    $(document).ready(function(){
+        $("#downbtn").trigger('click');
+    });
 }
+
