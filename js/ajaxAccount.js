@@ -1,4 +1,4 @@
-function ajaxUpdatePersonalInfo() {
+function updatePersonalInfo() {
     let accountString = window.localStorage.getItem("account");
     let account = JSON.parse(accountString);
 
@@ -8,10 +8,10 @@ function ajaxUpdatePersonalInfo() {
     account.birthday = $("#birthday").val();
     account.gender = $("#gender").val();
 
-    ajaxupdate(account);
+    ajaxUpdateAccount(account);
 }
 
-function ajaxUpdateContact() {
+function updateContact() {
     let accountString = window.localStorage.getItem("account");
     let account = JSON.parse(accountString);
 
@@ -19,10 +19,10 @@ function ajaxUpdateContact() {
     account.username = $("#email").val();
     account.address = $("#address").val();
 
-    ajaxupdate(account);
+    ajaxUpdateAccount(account);
 }
 
-function ajaxupdate(account) {
+function ajaxUpdateAccount(account) {
     $.ajax("http://localhost:9090/account/" + account.accountID,
         {method: "PUT", processData: false, contentType: 'application/json', data: JSON.stringify(account)})
         .done(function (data) {
@@ -32,7 +32,25 @@ function ajaxupdate(account) {
                 window.location.reload();
                 /* Tải lại trang để js cập nhập thay đổi */
             } else {
-                alert(data.message);
+                alert("Lỗi" + data.message);
             }
         });
+}
+
+function fillAccountPage() {
+    if (accountString === null) {
+        window.location.replace("index.html");
+    } else {
+        let account = JSON.parse(accountString);
+
+        $("#displayName").val(account.displayName);
+        $("#firstName").val(account.firstName);
+        $("#lastName").val(account.lastName);
+        $("#birthday").val(account.birthday);
+        $("#gender").val(account.gender);
+
+        $("#phone").val(account.phone);
+        $("#email").val(account.username);
+        $("#address").val(account.address);
+    }
 }

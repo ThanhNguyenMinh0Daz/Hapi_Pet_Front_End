@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
-<body class="txt bg-white-sub" onload="checkExistingLogin()">
+<body class="txt bg-white-sub" onload="checkExistingLogin(); fillServiceVet()">
 
 <!-- header -->
 <div class="container-fluid border-grey-b bg-white sticky-top">
@@ -176,10 +176,10 @@
                 <div class="container-fluid rounded bg-white pb-3">
 
                     <!-- service list -->
-                    <div class="row">
+                    <div class="row" id="serviceVetList">
 
-                        <!-- service 1 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
+                        <!-- service 0 demo -->
+                        <div class="col-lg-4 col-sm-6 mt-3" hidden="hidden">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=PKTHYVietpet" class="text-decoration-none txt-black txt-hover-black">
                                     <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
@@ -216,178 +216,6 @@
 
                                     <p class="txt-bold px-2 mb-2">
                                         Từ 150.000 đ / 1 lần
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 2 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=TYProCare" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; THÚ Y PROCARE
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 98C Phan Đăng Lưu, P.3, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-half"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://thuyprocare.com/upload/images/X%C3%89T%20NGHI%E1%BB%86M/trung-tam-xet-nghiem-cho-meo.jpg"
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-pink px-2 my-2">
-                                        <i class="bi-plus-circle"></i>&nbsp; Xét nghiệm chó mèo
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Trung tâm xét nghiệm chó mèo Procare ra đời giúp việc chẩn đoán bệnh cho thú cưng để đưa ra phác đồ điều trị phù hợp nhất.
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        Từ 100.000 đ / 1 lượt
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 3 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=TYProCare" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; THÚ Y PROCARE
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 98C Phan Đăng Lưu, P.3, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-half"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (3 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://thuyprocare.com/upload/images/PH%E1%BA%A8U%20THU%E1%BA%ACT/dich-vu-triet-san-cho-meo.jpg"
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-pink px-2 my-2">
-                                        <i class="bi-plus-circle"></i>&nbsp; TRIỆT SẢN CHÓ MÈO
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Với đội ngũ bác sĩ thú y được đào tạo chuyên sâu và kinh nghiệm hành nghề lâu năm, Procare đã và đang triển khai dịch vụ ...
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        Từ 50.000 đ / 1 lượt
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 4 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=DRBullSpa" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; DR BULL SPA
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 205 Nguyễn Cư Trinh, P.Nguyễn Cư Trinh, Q.1, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (4 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://drbull.vn/wp-content/uploads/2017/09/cat-vaccinations-2.jpg"
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-pink px-2 my-2">
-                                        <i class="bi-plus-circle"></i>&nbsp; Triệt sản mèo
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Quy trình triệt sản phải được thực hiện với chất lượng thuốc mê tốt nhất tránh những nguy ...
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        Từ 40.000 / 1 bé
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 5 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=PPetHotelASpa" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; PPet hotel & spa
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 172 Hoa Lan, P.2, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (2 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/abxbflu/2014_08_13/irei05.jpg"
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-pink px-2 my-2">
-                                        <i class="bi-plus-circle"></i>&nbsp; Khám tổng quát
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Phòng khám và điều trị cao cấp dành cho thú cưng.
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        Tùy tình huống
                                     </p>
                                 </a>
                             </div>
@@ -470,6 +298,7 @@
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxService.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/bootstrap.esm.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>

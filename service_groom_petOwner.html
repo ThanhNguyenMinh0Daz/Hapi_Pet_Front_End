@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
-<body class="txt bg-white-sub" onload="checkExistingLogin()">
+<body class="txt bg-white-sub" onload="checkExistingLogin(); fillServiceGroom()">
 
 <!-- header -->
 <div class="container-fluid border-grey-b bg-white sticky-top">
@@ -175,10 +175,10 @@
                 <div class="container-fluid rounded bg-white pb-3">
 
                     <!-- service list -->
-                    <div class="row">
+                    <div class="row" id="serviceGroomList">
 
-                        <!-- service 1 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
+                        <!-- service 0 demo -->
+                        <div class="col-lg-4 col-sm-6 mt-3" hidden="hidden">
                             <div class="rounded border-pink border-hover-shadow h-100">
                                 <a href="serviceShop_detail.html?shop=TYProCare" class="text-decoration-none txt-black txt-hover-black">
                                     <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
@@ -215,92 +215,6 @@
 
                                     <p class="txt-bold px-2 mb-2">
                                         Từ 35.000 đ / 1 lượt
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 2 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=DRBullSpa" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; DR BULL SPA
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 205 Nguyễn Cư Trinh, P.Nguyễn Cư Trinh, Q.1, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (4 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://drbull.vn/wp-content/uploads/2017/09/tamthucung.jpg" alt=""
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-teal px-2 my-2">
-                                        <i class="bi-scissors"></i>&nbsp; SPA Tắm, sấy&Vệ sinh tổng quát
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Dịch vụ SPA Tắm & Vệ sinh tổng quát cho các bé CHÓ MÈO tại DR BULL được thực hiện theo quy trình chuyên nghiệp, ...
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        Từ 125.000 đ / 1 bé dưới 2kg. <a href="https://drbull.vn/wp-content/uploads/2020/08/0001-724x1024.jpg" class="text-decoration-none txt-blue">Chi tiết</a>
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- service 3 -->
-                        <div class="col-lg-4 col-sm-6 mt-3">
-                            <div class="rounded border-pink border-hover-shadow h-100">
-                                <a href="serviceShop_detail.html?shop=PPetHotelASpa" class="text-decoration-none txt-black txt-hover-black">
-                                    <p class="txt-bold txt-hover-orange px-2 mt-2 mb-1">
-                                        <i class="bi-shop-window"></i>&nbsp; PPet hotel & spa
-                                    </p>
-
-                                    <p class="txt-smx txt-italic px-2 mb-1">
-                                        <i class="bi-geo-alt"></i>&nbsp; 172 Hoa Lan, P.2, Phú Nhuận, TP.HCM
-                                    </p>
-
-                                    <p class="txt-smx txt-pink px-2 mb-1">
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        <i class="bi-star-fill"></i>
-                                        &nbsp; <i class="txt-black border-grey-l">&nbsp; (2 đánh giá)</i>
-                                    </p>
-
-                                    <div class="square-wrapper border-grey-sub-y">
-                                        <div class="fill-wrapper">
-                                            <img src="https://photo-cms-plo.zadn.vn/w800/Uploaded/2021/abxbflu/2014_08_13/bnsi12_2.jpg"
-                                                 class="w-100 h-100 img-cover">
-                                        </div>
-                                    </div>
-
-                                    <p class="txt-bold txt-hover-teal px-2 my-2">
-                                        <i class="bi-scissors"></i>&nbsp; Spa làm đẹp
-                                    </p>
-
-                                    <p class="txt-bold txt-sm px-2 mb-2">
-                                        Spa cao cấp cho các bé, đảm bảo thư giãn thoải mái. Gồm 2 gói: Đầy đủ, cơ bản
-                                    </p>
-
-                                    <p class="txt-bold px-2 mb-2">
-                                        200.000 - 300.000/lượt
                                     </p>
                                 </a>
                             </div>
@@ -383,6 +297,7 @@
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxService.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/bootstrap.esm.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>

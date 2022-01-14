@@ -15,18 +15,9 @@ function ajaxGetAllServiceShop() {
             if (data.status === "success") {
                 window.sessionStorage.setItem("serviceShopDTOList", JSON.stringify(data.data));
             } else {
-                alert('Lỗi');
+                alert("Lỗi: " + data.message);
             }
         });
-}
-
-function ajaxGetAllVetService() {
-}
-
-function ajaxGetAllGroomService() {
-}
-
-function ajaxGetAllHotelService() {
 }
 
 function fillServiceHome() {
@@ -54,7 +45,6 @@ function fillServiceHome() {
                             .attr("alt", "shopImg")
                             .addClass("w-100 h-100 img-cover rounded-top")));
         } else {
-            alert("No img")
             shopImg.append(
                 $("<div>").addClass("fill-wrapper")
                     .append(
@@ -108,32 +98,37 @@ function fillServiceHome() {
         for (let j = 0; j < serviceShopDTO.serviceDTOList.length; j++) {
             tmp.add(serviceShopDTO.serviceDTOList[j].category.categoryID);
         }
-        if (tmp.has(1)) {
-            shopServiceCategory.addClass("jquery-service-vet")
-                .append(
-                    $("<div>").addClass("col-4 mt-2")
+
+        for (let categoryID of tmp.values()) {
+            switch (categoryID) {
+                case 1:
+                    shopServiceCategory.addClass("jquery-service-vet")
                         .append(
-                            $("<p>").addClass("txt-sm text-center rounded border-pink py-1 mb-0")
-                                .append($("<i>").addClass("bi-plus-circle"))
-                                .append("&nbsp; Vet")));
-        }
-        if (tmp.has(2)) {
-            shopServiceCategory.addClass("jquery-service-groom")
-                .append(
-                    $("<div>").addClass("col-4 mt-2")
+                            $("<div>").addClass("col-4 mt-2")
+                                .append(
+                                    $("<p>").addClass("txt-sm text-center rounded border-pink py-1 mb-0")
+                                        .append($("<i>").addClass("bi-plus-circle"))
+                                        .append("&nbsp; Vet")));
+                    break;
+                case 2:
+                    shopServiceCategory.addClass("jquery-service-groom")
                         .append(
-                            $("<p>").addClass("txt-sm text-center rounded border-teal py-1 mb-0")
-                                .append($("<i>").addClass("bi-scissors"))
-                                .append("&nbsp; Groom")));
-        }
-        if (tmp.has(3)) {
-            shopServiceCategory.addClass("jquery-service-hotel")
-                .append(
-                    $("<div>").addClass("col-4 mt-2")
+                            $("<div>").addClass("col-4 mt-2")
+                                .append(
+                                    $("<p>").addClass("txt-sm text-center rounded border-teal py-1 mb-0")
+                                        .append($("<i>").addClass("bi-scissors"))
+                                        .append("&nbsp; Groom")));
+                    break;
+                case 3:
+                    shopServiceCategory.addClass("jquery-service-hotel")
                         .append(
-                            $("<p>").addClass("txt-sm text-center rounded border-yellow py-1 mb-0")
-                                .append($("<i>").addClass("bi-building"))
-                                .append("&nbsp; Hotel")));
+                            $("<div>").addClass("col-4 mt-2")
+                                .append(
+                                    $("<p>").addClass("txt-sm text-center rounded border-yellow py-1 mb-0")
+                                        .append($("<i>").addClass("bi-building"))
+                                        .append("&nbsp; Hotel")));
+                    break;
+            }
         }
 
         let serviceShopDisplay =
@@ -155,18 +150,315 @@ function fillServiceHome() {
 }
 
 function fillServiceVet() {
-    /*onload body, kiếm theo id điền vào chỗ trống*/
-    let serviceList = ajaxGetAllVetService();
+    let serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+
+    if (serviceShopDTOListString === null) {
+        /*Run once*/
+        ajaxGetAllServiceShop();
+        serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+    }
+
+    let serviceShopDTOList = JSON.parse(serviceShopDTOListString);
+
+    let serviceVetList = $("#serviceVetList");
+
+    for (let i = 0; i < serviceShopDTOList.length; i++) {
+
+        let serviceShopDTO = serviceShopDTOList[i];
+
+        let serviceDTOList = serviceShopDTO.serviceDTOList;
+        if (serviceDTOList !== null && serviceDTOList.length > 0) {
+
+            for (let j = 0; j < serviceDTOList.length; j++) {
+
+                let serviceDTO = serviceDTOList[j];
+                if (serviceDTO.category.categoryID === 1) {
+                    let shopName = $("<p>").addClass("txt-bold txt-hover-orange px-2 mt-2 mb-1")
+                        .append($("<i>").addClass("bi-shop-window"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopName);
+
+                    let shopAddress = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append($("<i>").addClass("bi-geo-alt"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopAddress);
+
+                    let shopReview = $("<p>").addClass("txt-smx txt-pink px-2 mb-1");
+                    if (serviceShopDTO.reviewList !== null && serviceShopDTO.reviewList.length > 0) {
+                        let tmp = 0;
+                        for (let j = 0; j < serviceShopDTO.reviewList.length; i++) {
+                            tmp += shop.reviews[i].star;
+                        }
+                        tmp = tmp / serviceShopDTO.reviewList.length;
+                        for (let j = 0; j < 5; i++) {
+                            if (tmp >= 1) {
+                                shopReview.append($("<i>").addClass("bi-star-fill"));
+                            } else if (tmp > 0.5) {
+                                shopReview.append($("<i>").addClass("bi-star-half"));
+                            } else {
+                                shopReview.append($("<i>").addClass("bi-star"));
+                            }
+                            tmp--;
+                        }
+                        tmp = null;
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (" + serviceShopDTO.reviewList.length + " đánh giá)"));
+                    } else {
+                        for (let j = 0; j < 5; j++) {
+                            shopReview.append($("<i>").addClass("bi-star"));
+                        }
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (0 đánh giá)"));
+                    }
+
+                    let serviceImg = $("<div>").addClass("square-wrapper border-grey-sub-y")
+                        .append(
+                            $("<div>").addClass("fill-wrapper")
+                                .append(
+                                    $("<img>").addClass("w-100 h-100 img-cover")
+                                        .attr("src", serviceDTO.image.imageLink)
+                                        .attr("alt", "serviceImg")));
+
+                    let serviceName = $("<p>").addClass("txt-bold txt-hover-pink px-2 my-2")
+                        .append($("<i>").addClass("bi-plus-circle"))
+                        .append("&nbsp; " + serviceDTO.service.serviceName);
+
+                    let serviceDesc = $("<p>").addClass("txt-bold txt-sm px-2 mb-2")
+                        .append(serviceDTO.service.serviceDescription.slice(0, 150) + " ...");
+
+                    let servicePrice = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append(serviceDTO.service.serviceprice);
+
+                    let serviceVetDisplay =
+                        $("<div>").addClass("col-lg-4 col-sm-6 mt-3")
+                            .append(
+                                $("<div>").addClass("rounded border-pink border-hover-shadow h-100")
+                                    .append(
+                                        $("<a>").addClass("text-decoration-none txt-black txt-hover-black")
+                                            .attr("href", "serviceShop_detail.html?shopID=" + serviceShopDTO.shop.shopID)
+                                            .append(shopName)
+                                            .append(shopAddress)
+                                            .append(shopReview)
+                                            .append(serviceImg)
+                                            .append(serviceName)
+                                            .append(serviceDesc)
+                                            .append(servicePrice)
+                                    )
+                            );
+
+                    serviceVetList.append(serviceVetDisplay);
+                }
+            }
+        }
+    }
 }
 
 function fillServiceGroom() {
-    /*onload body, kiếm theo id điền vào chỗ trống*/
-    let serviceList = ajaxGetAllGroomService();
+    let serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+
+    if (serviceShopDTOListString === null) {
+        /*Run once*/
+        ajaxGetAllServiceShop();
+        serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+    }
+
+    let serviceShopDTOList = JSON.parse(serviceShopDTOListString);
+
+    let serviceGroomList = $("#serviceGroomList");
+
+    for (let i = 0; i < serviceShopDTOList.length; i++) {
+
+        let serviceShopDTO = serviceShopDTOList[i];
+
+        let serviceDTOList = serviceShopDTO.serviceDTOList;
+        if (serviceDTOList !== null && serviceDTOList.length > 0) {
+
+            for (let j = 0; j < serviceDTOList.length; j++) {
+
+                let serviceDTO = serviceDTOList[j];
+                if (serviceDTO.category.categoryID === 2) {
+                    let shopName = $("<p>").addClass("txt-bold txt-hover-orange px-2 mt-2 mb-1")
+                        .append($("<i>").addClass("bi-shop-window"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopName);
+
+                    let shopAddress = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append($("<i>").addClass("bi-geo-alt"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopAddress);
+
+                    let shopReview = $("<p>").addClass("txt-smx txt-pink px-2 mb-1");
+                    if (serviceShopDTO.reviewList !== null && serviceShopDTO.reviewList.length > 0) {
+                        let tmp = 0;
+                        for (let j = 0; j < serviceShopDTO.reviewList.length; i++) {
+                            tmp += shop.reviews[i].star;
+                        }
+                        tmp = tmp / serviceShopDTO.reviewList.length;
+                        for (let j = 0; j < 5; i++) {
+                            if (tmp >= 1) {
+                                shopReview.append($("<i>").addClass("bi-star-fill"));
+                            } else if (tmp > 0.5) {
+                                shopReview.append($("<i>").addClass("bi-star-half"));
+                            } else {
+                                shopReview.append($("<i>").addClass("bi-star"));
+                            }
+                            tmp--;
+                        }
+                        tmp = null;
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (" + serviceShopDTO.reviewList.length + " đánh giá)"));
+                    } else {
+                        for (let j = 0; j < 5; j++) {
+                            shopReview.append($("<i>").addClass("bi-star"));
+                        }
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (0 đánh giá)"));
+                    }
+
+                    let serviceImg = $("<div>").addClass("square-wrapper border-grey-sub-y")
+                        .append(
+                            $("<div>").addClass("fill-wrapper")
+                                .append(
+                                    $("<img>").addClass("w-100 h-100 img-cover")
+                                        .attr("src", serviceDTO.image.imageLink)
+                                        .attr("alt", "serviceImg")));
+
+                    let serviceName = $("<p>").addClass("txt-bold txt-hover-teal px-2 my-2")
+                        .append($("<i>").addClass("bi-scissors"))
+                        .append("&nbsp; " + serviceDTO.service.serviceName);
+
+                    let serviceDesc = $("<p>").addClass("txt-bold txt-sm px-2 mb-2")
+                        .append(serviceDTO.service.serviceDescription.slice(0, 150) + " ...");
+
+                    let servicePrice = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append(serviceDTO.service.serviceprice);
+
+                    let serviceGroomDisplay =
+                        $("<div>").addClass("col-lg-4 col-sm-6 mt-3")
+                            .append(
+                                $("<div>").addClass("rounded border-pink border-hover-shadow h-100")
+                                    .append(
+                                        $("<a>").addClass("text-decoration-none txt-black txt-hover-black")
+                                            .attr("href", "serviceShop_detail.html?shopID=" + serviceShopDTO.shop.shopID)
+                                            .append(shopName)
+                                            .append(shopAddress)
+                                            .append(shopReview)
+                                            .append(serviceImg)
+                                            .append(serviceName)
+                                            .append(serviceDesc)
+                                            .append(servicePrice)
+                                    )
+                            );
+
+                    serviceGroomList.append(serviceGroomDisplay);
+                }
+            }
+        }
+    }
 }
 
 function fillServiceHotel() {
-    /*onload body, kiếm theo id điền vào chỗ trống*/
-    let serviceList = ajaxGetAllHotelService();
+    let serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+
+    if (serviceShopDTOListString === null) {
+        /*Run once*/
+        ajaxGetAllServiceShop();
+        serviceShopDTOListString = window.sessionStorage.getItem("serviceShopDTOList");
+    }
+
+    let serviceShopDTOList = JSON.parse(serviceShopDTOListString);
+
+    let serviceHotelList = $("#serviceHotelList");
+
+    for (let i = 0; i < serviceShopDTOList.length; i++) {
+
+        let serviceShopDTO = serviceShopDTOList[i];
+
+        let serviceDTOList = serviceShopDTO.serviceDTOList;
+        if (serviceDTOList !== null && serviceDTOList.length > 0) {
+
+            for (let j = 0; j < serviceDTOList.length; j++) {
+
+                let serviceDTO = serviceDTOList[j];
+                if (serviceDTO.category.categoryID === 3) {
+                    let shopName = $("<p>").addClass("txt-bold txt-hover-orange px-2 mt-2 mb-1")
+                        .append($("<i>").addClass("bi-shop-window"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopName);
+
+                    let shopAddress = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append($("<i>").addClass("bi-geo-alt"))
+                        .append("&nbsp; " + serviceShopDTO.shop.shopAddress);
+
+                    let shopReview = $("<p>").addClass("txt-smx txt-pink px-2 mb-1");
+                    if (serviceShopDTO.reviewList !== null && serviceShopDTO.reviewList.length > 0) {
+                        let tmp = 0;
+                        for (let j = 0; j < serviceShopDTO.reviewList.length; i++) {
+                            tmp += shop.reviews[i].star;
+                        }
+                        tmp = tmp / serviceShopDTO.reviewList.length;
+                        for (let j = 0; j < 5; i++) {
+                            if (tmp >= 1) {
+                                shopReview.append($("<i>").addClass("bi-star-fill"));
+                            } else if (tmp > 0.5) {
+                                shopReview.append($("<i>").addClass("bi-star-half"));
+                            } else {
+                                shopReview.append($("<i>").addClass("bi-star"));
+                            }
+                            tmp--;
+                        }
+                        tmp = null;
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (" + serviceShopDTO.reviewList.length + " đánh giá)"));
+                    } else {
+                        for (let j = 0; j < 5; j++) {
+                            shopReview.append($("<i>").addClass("bi-star"));
+                        }
+                        shopReview.append("&nbsp; ")
+                            .append($("<i>").addClass("txt-black border-grey-l")
+                                .append("&nbsp; (0 đánh giá)"));
+                    }
+
+                    let serviceImg = $("<div>").addClass("square-wrapper border-grey-sub-y")
+                        .append(
+                            $("<div>").addClass("fill-wrapper")
+                                .append(
+                                    $("<img>").addClass("w-100 h-100 img-cover")
+                                        .attr("src", serviceDTO.image.imageLink)
+                                        .attr("alt", "serviceImg")));
+
+                    let serviceName = $("<p>").addClass("txt-bold txt-hover-yellow px-2 my-2")
+                        .append($("<i>").addClass("bi-building"))
+                        .append("&nbsp; " + serviceDTO.service.serviceName);
+
+                    let serviceDesc = $("<p>").addClass("txt-bold txt-sm px-2 mb-2")
+                        .append(serviceDTO.service.serviceDescription.slice(0, 150) + " ...");
+
+                    let servicePrice = $("<p>").addClass("txt-smx txt-italic px-2 mb-1")
+                        .append(serviceDTO.service.serviceprice);
+
+                    let serviceHotelDisplay =
+                        $("<div>").addClass("col-lg-4 col-sm-6 mt-3")
+                            .append(
+                                $("<div>").addClass("rounded border-pink border-hover-shadow h-100")
+                                    .append(
+                                        $("<a>").addClass("text-decoration-none txt-black txt-hover-black")
+                                            .attr("href", "serviceShop_detail.html?shopID=" + serviceShopDTO.shop.shopID)
+                                            .append(shopName)
+                                            .append(shopAddress)
+                                            .append(shopReview)
+                                            .append(serviceImg)
+                                            .append(serviceName)
+                                            .append(serviceDesc)
+                                            .append(servicePrice)
+                                    )
+                            );
+
+                    serviceHotelList.append(serviceHotelDisplay);
+                }
+            }
+        }
+    }
 }
 
 
@@ -178,7 +470,7 @@ function ajaxGetServiceShopByShopID(shopID) {
             if (data.status === "success") {
                 window.sessionStorage.setItem("serviceShopDTO", JSON.stringify(data.data));
             } else {
-                alert('Lỗi');
+                alert("Lỗi: " + data.message);
             }
         });
     return window.sessionStorage.getItem("serviceShopDTO");
@@ -227,12 +519,32 @@ function toggleWhitePinkBG(id1, id2) {
     }
 }
 
-function moveToReservation(shopID) {
-    window.location.href = "reservation_petOwner.html?shopID=" + shopID;
+function moveToReservation() {
+    let serviceShopDTOString = window.sessionStorage.getItem("serviceShopDTO");
+    let serviceShopDTO = JSON.parse(serviceShopDTOString);
+
+    let serviceIDList = [];
+
+    for (let i = 0; i < serviceShopDTO.serviceDTOList.length; i++) {
+        let serviceNo = $("#service" + (i + 1) + "Check");
+        if (serviceNo.hasClass("btn-pink")) {
+            serviceIDList.push(serviceShopDTO.serviceDTOList[i].service.serviceID);
+        }
+    }
+
+    if (serviceIDList.length > 0) {
+        window.location.href = "reservation_petOwner_ajax.html?shopID=" + serviceShopDTO.shop.shopID
+            + "&serviceIDList=" + encodeURIComponent(JSON.stringify(serviceIDList));
+    } else {
+        alert("Bạn chưa chọn dịch vụ nào");
+    }
 }
 
 function fillServiceShopDetail(paramsString) {
     let params = new URLSearchParams(paramsString);
+
+    /*refresh*/
+    window.sessionStorage.removeItem("serviceShopDTO");
 
     let serviceShopDTOString = ajaxGetServiceShopByShopID(params.get("shopID"));
 
@@ -287,9 +599,9 @@ function fillServiceShopDetail(paramsString) {
         .append(serviceShopDTO.shop.shopDescription);
 
 
-
     /* Service offer */
     let serviceDTOList = serviceShopDTO.serviceDTOList;
+    let serviceShopServiceTab = $("#serviceShopServiceTab");
     if (serviceDTOList !== null && serviceDTOList.length > 0) {
         tmp = new Set();
         for (let i = 0; i < serviceDTOList.length; i++) {
@@ -298,10 +610,10 @@ function fillServiceShopDetail(paramsString) {
 
         let serviceShopServiceOffer = $("#serviceShopServiceOffer");
 
-        for (let i = 0; i < tmp.size; i++) {
+        for (let categoryID of tmp.values()) {
             let category = $("<div>").addClass("col-4");
 
-            switch (tmp[i]) {
+            switch (categoryID) {
                 case 1:
                     category.append(
                         $("<p>").addClass("text-center rounded border-pink py-1 mb-0")
@@ -326,7 +638,6 @@ function fillServiceShopDetail(paramsString) {
         }
 
         /* service tab  */
-        let serviceShopServiceTab = $("#serviceShopServiceTab");
 
         for (let i = 0; i < serviceDTOList.length; i++) {
 
@@ -339,12 +650,12 @@ function fillServiceShopDetail(paramsString) {
                     break;
                 case 2:
                     serviceDescName.addClass("border-teal-b")
-                        .append($("<i>").addClass("bi-plus-circle"))
+                        .append($("<i>").addClass("bi-scissors"))
                         .append("&nbsp; " + serviceDTOList[i].service.serviceName);
                     break;
                 case 3:
                     serviceDescName.addClass("border-yellow-b")
-                        .append($("<i>").addClass("bi-plus-circle"))
+                        .append($("<i>").addClass("bi-building"))
                         .append("&nbsp; " + serviceDTOList[i].service.serviceName);
                     break;
             }
@@ -379,11 +690,17 @@ function fillServiceShopDetail(paramsString) {
                                         $("<p>").addClass("txt-bold txt-md mb-1")
                                             .append(serviceDTOList[i].service.servicePrice))
                                     .append(
-                                        $("<p>").addClass("txt-sm")
+                                        $("<p>").addClass("txt-sm mb-1")
                                             .append(serviceDTOList[i].service.serviceDescription)))));
         }
+    } else {
+        serviceShopServiceTab.html("")
+            .append(
+                $("<div>").addClass("col-12")
+                    .append(
+                        $("<p>").addClass("txt-bold text-center")
+                            .append("No service available!")));
     }
-
 
 
     /* review */
@@ -392,7 +709,6 @@ function fillServiceShopDetail(paramsString) {
     let serviceShopStar = $("#serviceShopStar");
     let reviewStar = $("<div>").addClass("col-lg-10 col-sm-6 mt-3 txt-pink d-flex align-items-center");
     if (reviewList !== null && reviewList.length > 0) {
-
         tmp = 0;
         for (let i = 0; i < reviewList.length; i++) {
             tmp += reviewList[i].star
@@ -461,4 +777,134 @@ function fillServiceShopDetail(paramsString) {
 }
 
 function ajaxSendReview() {
+}
+
+
+/* Reservation */
+function fillReservationDetail(paramsString) {
+    let params = new URLSearchParams(paramsString);
+
+    /*refresh*/
+    window.sessionStorage.removeItem("serviceShopDTO");
+
+    let account = JSON.parse(accountString);
+
+    let serviceShopDTOString = ajaxGetServiceShopByShopID(params.get("shopID"));
+    let serviceShopDTO = JSON.parse(serviceShopDTOString);
+
+    let serviceIDList = JSON.parse(decodeURIComponent(params.get("serviceIDList")));
+
+    let serviceDTOList = serviceShopDTO.serviceDTOList;
+
+    $("#bookerName").val(account.displayName);
+
+    $("#bookerPhone").val(account.phone);
+
+    $("#bookedLocation").val(serviceShopDTO.shop.shopName);
+
+    let serviceHolder = $("#serviceHolder");
+    let tmp = 0;
+
+    for (let serviceDTO of serviceDTOList) {
+        if (serviceIDList.includes(serviceDTO.service.serviceID)) {
+            tmp++;
+            let bookingDetailNo =
+                $("<div>").addClass("row border-teal-b align-items-center txt-lg mx-0")
+                    .append(
+                        $("<div>").addClass("col-11")
+                            .append(
+                                $("<p>").addClass("txt-teal txt-bold mb-0")
+                                    .append("Dịch vụ " + tmp)))
+                    .append(
+                        $("<div>").addClass("col-1 btn btn-pink rounded-0")
+                            .attr("onClick", "hideItem('service" + tmp + "')")
+                            .attr("id", "close" + tmp)
+                            .append(
+                                $("<i>").addClass("bi-x-lg")));
+
+            let select =
+                $("<select>").addClass("rounded border-grey w-100 bg-white-sub mt-1 py-1 px-2")
+                    .attr("name", "serviceChoose");
+            for (let tmpDTO of serviceDTOList) {
+                let option =
+                    $("<option>").attr("value", tmpDTO.service.serviceID)
+                        .append(tmpDTO.service.serviceName);
+
+                if (serviceDTO.service.serviceID
+                    .localeCompare(tmpDTO.service.serviceID) === 0) {
+                    option.attr("selected", "selected");
+                }
+
+                select.append(option);
+            }
+
+            let bookDatetime =
+                $("<div>").addClass("col-12 mt-2")
+                    .append(
+                        $("<div>").addClass("row mt-1 align-items-center")
+                            .append(
+                                $("<div>").addClass("col-6")
+                                    .append(
+                                        $("<label>").addClass("txt-bold txt-black")
+                                            .append("Hẹn từ"))
+                                    .append(
+                                        $("<input>").addClass("rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1")
+                                            .attr("type", "datetime-local")
+                                            .attr("name", "dateTimeFrom")
+                                            .val(getCurrentDateTimestampString() + "T08:00:00")))
+                            .append(
+                                $("<div>").addClass("col-6")
+                                    .append(
+                                        $("<label>").addClass("txt-bold txt-black")
+                                            .append("Hẹn Đến"))
+                                    .append(
+                                        $("<input>").addClass("rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1")
+                                            .attr("type", "datetime-local")
+                                            .attr("name", "dateTimeTo")
+                                            .val(getCurrentDateTimestampString() + "T22:00:00"))));
+
+
+            let problemNote =
+                $("<div>").addClass("col-12 mt-2")
+                    .append(
+                        $("<label>").addClass("txt-bold txt-black")
+                            .append("Ghi chú"))
+                    .append(
+                        $("<textarea>").addClass("rounded border-grey w-100 bg-white-sub py-1 px-2 mt-1")
+                            .attr("rows", "3")
+                            .attr("placeholder", "Vấn đề của bạn")
+                            .attr("style", "resize: none;"));
+
+            let bookingDetail =
+                $("<div>").addClass("col-12 mt-3")
+                    .attr("id", "service" + tmp)
+                    .append(
+                        $("<div>").addClass("rounded border-teal")
+                            .append(bookingDetailNo)
+                            .append(
+                                $("<div>").addClass("row align-items-center pb-3 mx-0")
+                                    .append(
+                                        $("<div>").addClass("col-12 mt-2")
+                                            .append(
+                                                $("<label>").addClass("txt-bold txt-black")
+                                                    .append("Dịch vụ muốn đặt")
+                                            )
+                                            .append(select)
+                                    )
+                                    .append()
+                                    .append(bookDatetime)
+                                    .append(problemNote)));
+
+            serviceHolder.append(bookingDetail);
+        }
+    }
+
+    serviceHolder.append(
+        $("<div>").addClass("col-12 mt-3")
+            .append(
+                $("<button>").addClass("btn btn-teal w-100")
+                    .attr("onclick", "")
+                    .append("Thêm dịch vụ")
+            )
+    )
 }

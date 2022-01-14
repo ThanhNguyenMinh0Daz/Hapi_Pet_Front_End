@@ -9,7 +9,7 @@ function ajaxSendOtp() {
                 // alert('Mã OTP đã được gửi');
                 $("#otpNum1").focus();
             } else {
-                alert('Số điện thoại không hợp lệ');
+                alert("Lỗi: " + data.message);
             }
         });
 }
@@ -26,7 +26,7 @@ function ajaxLoginPhone() {
                 window.location.replace("index.html");
                 /*Login xong xóa luôn, khỏi back về login*/
             } else {
-                alert('Mã otp không hợp lệ');
+                alert("Lỗi: " + data.message);
             }
         });
 }

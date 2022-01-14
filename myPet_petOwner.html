@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
-<body class="txt bg-white-sub" onload="checkExistingLogin()">
+<body class="txt bg-white-sub" onload="checkExistingLogin(); fillMyPetPage()">
 
 <!-- header -->
 <div class="container-fluid border-grey-b bg-white sticky-top">
@@ -130,7 +130,7 @@
     <div class="container-fluid txt-black px-5 pb-3">
 
         <!-- add pet, pet list -->
-        <div class="row mt-3">
+        <div class="row flex-row flex-nowrap overflow-auto mt-3" id="petList">
 
             <!-- Add pet -->
             <div class="col-lg-2 col-sm-4 mt-3">
@@ -150,48 +150,18 @@
                 </div>
             </div>
 
-            <!-- Pet 1 -->
-            <div class="col-lg-2 col-sm-4 mt-3">
+            <!-- Pet 0 demo -->
+            <div class="col-lg-2 col-sm-4 mt-3" hidden="hidden">
                 <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
-                     onclick="showItem('petDetail'); hideItem('newPet')">
+                     onclick="fillPetDetail(-1)">
                     <div class="square-wrapper">
                         <div class="fill-wrapper">
                             <img src="https://i.imgur.com/ofrm7Bu.jpg" alt="pet"
-                                 class="w-100 img-fluid img-cover rounded-top">
+                                 class="w-100 h-100 img-contain rounded-top">
                         </div>
                     </div>
 
                     <p class="text-center txt-bold mt-3">Casper</p>
-                </div>
-            </div>
-
-            <!-- Pet 2 -->
-            <div class="col-lg-2 col-sm-4 mt-3">
-                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
-                     onclick="showItem('petDetail'); hideItem('newPet')">
-                    <div class="square-wrapper">
-                        <div class="fill-wrapper">
-                            <img src="https://i.imgur.com/Dq3LvlO.jpg" alt="pet"
-                                 class="w-100 img-fluid img-cover rounded-top">
-                        </div>
-                    </div>
-
-                    <p class="text-center txt-bold mt-3">Cậu Vàng</p>
-                </div>
-            </div>
-
-            <!-- Pet 3 -->
-            <div class="col-lg-2 col-sm-4 mt-3">
-                <div class="h-100 rounded border-pink border-hover-shadow txt-hover-pink"
-                     onclick="showItem('petDetail'); hideItem('newPet')">
-                    <div class="square-wrapper">
-                        <div class="fill-wrapper">
-                            <img src="https://i.imgur.com/Q05uWMz.jpg" alt="pet"
-                                 class="w-100 img-fluid img-cover rounded-top">
-                        </div>
-                    </div>
-
-                    <p class="text-center txt-bold mt-3">Mimi</p>
                 </div>
             </div>
 
@@ -229,8 +199,8 @@
                         <label class="txt-bold" for="newPetName">Tên:</label>
                     </div>
                     <div class="col-lg-9 col-sm-7">
-                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="newPetName"
-                               placeholder="Boss 123"/>
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
+                               id="newPetName" placeholder="Boss 123"/>
                     </div>
                 </div>
 
@@ -241,7 +211,7 @@
                     </div>
                     <div class="col-lg-9 col-sm-7">
                         <input type="date" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
-                               id="newPetBirthday" value="200-01-01"/>
+                               id="newPetBirthday" value="2020-01-01"/>
                     </div>
                 </div>
 
@@ -255,25 +225,25 @@
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="newPetGender" id="newPetGenderUnknown" value="unknown" checked="checked"/>
+                                       name="newPetGender" id="newPetGenderUnknown" value="0" checked="checked"/>
                                 <label class="" for="newPetGenderUnknown">???</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="newPetGender" id="newPetGenderOther" value="other"/>
+                                       name="newPetGender" id="newPetGenderOther" value="3"/>
                                 <label class="" for="newPetGenderOther">Khác</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="newPetGender" id="newPetGenderMale" value="male"/>
+                                       name="newPetGender" id="newPetGenderMale" value="1"/>
                                 <label class="" for="newPetGenderMale">Đực</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="newPetGender" id="newPetGenderFemale" value="female"/>
+                                       name="newPetGender" id="newPetGenderFemale" value="2"/>
                                 <label class="" for="newPetGenderFemale">Cái</label>
                             </div>
 
@@ -289,12 +259,13 @@
                     <div class="col-lg-4 col-sm-7 mt-3">
                         <select name="newPetSpecies" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
                                 id="newPetSpecies">
-                            <option value="dog">Chó</option>
-                            <option value="cat">Mèo</option>
-                            <option value="cat">Chim</option>
-                            <option value="cat">Cá</option>
-                            <option value="cat">Chuột</option>
-                            <option value="cat">Thỏ</option>
+                            <option value="0">Không biết</option>
+                            <option value="1">Chó</option>
+                            <option value="2">Mèo</option>
+                            <option value="3">Chim</option>
+                            <option value="4">Cá</option>
+                            <option value="5">Chuột Hamster</option>
+                            <option value="6">Thỏ</option>
                         </select>
                     </div>
 
@@ -350,7 +321,7 @@
             </div>
 
             <div class="col-6 mt-3">
-                <button class="btn btn-teal txt-bold w-100" onclick="hideItem('newPet')">Lưu</button>
+                <button class="btn btn-teal txt-bold w-100" onclick="hideItem('newPet'); insertPet()">Lưu</button>
             </div>
 
         </div>
@@ -370,10 +341,7 @@
             <div class="col-lg-3 col-sm-5 mt-3">
                 <div class="square-wrapper">
                     <div class="rounded border-pink fill-wrapper">
-                        <div class="h-100 row justify-content-center align-items-center">
-                            <img src="https://i.imgur.com/ofrm7Bu.jpg" alt="add pet"
-                                 class="w-100 img-fluid img-cover rounded">
-                        </div>
+                        <img src="" alt="add pet" class="w-100 h-100 img-contain rounded" id="petImage">
                     </div>
                 </div>
             </div>
@@ -387,8 +355,7 @@
                         <label class="txt-bold" for="petName">Tên:</label>
                     </div>
                     <div class="col-lg-9 col-sm-7">
-                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petName"
-                               value="Casper"/>
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petName"/>
                     </div>
                 </div>
 
@@ -399,7 +366,7 @@
                     </div>
                     <div class="col-lg-9 col-sm-7">
                         <input type="date" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
-                               id="petBirthday" value="2019-04-03"/>
+                               id="petBirthday"/>
                     </div>
                 </div>
 
@@ -413,25 +380,25 @@
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="petGender" id="petGenderUnknown" value="unknown"/>
+                                       name="petGender" id="petGenderUnknown" value="0"/>
                                 <label class="" for="petGenderUnknown">???</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="petGender" id="petGenderOther" value="other"/>
+                                       name="petGender" id="petGenderOther" value="3"/>
                                 <label class="" for="petGenderOther">Khác</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="petGender" id="petGenderMale" value="male" checked="checked"/>
+                                       name="petGender" id="petGenderMale" value="1"/>
                                 <label class="" for="petGenderMale">Đực</label>
                             </div>
 
                             <div class="col-lg-3 col-sm-6">
                                 <input type="radio" class="rounded border-grey bg-white-sub py-1 px-2"
-                                       name="newPetGender" id="petGenderFemale" value="female"/>
+                                       name="petGender" id="petGenderFemale" value="2"/>
                                 <label class="" for="petGenderFemale">Cái</label>
                             </div>
 
@@ -447,12 +414,13 @@
                     <div class="col-lg-4 col-sm-7 mt-3">
                         <select name="newPetSpecies" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
                                 id="petSpecies">
-                            <option value="dog">Chó</option>
-                            <option value="cat" selected="selected">Mèo</option>
-                            <option value="cat">Chim</option>
-                            <option value="cat">Cá</option>
-                            <option value="cat">Chuột</option>
-                            <option value="cat">Thỏ</option>
+                            <option value="0">Không biết</option>
+                            <option value="1">Chó</option>
+                            <option value="2">Mèo</option>
+                            <option value="3">Chim</option>
+                            <option value="4">Cá</option>
+                            <option value="5">Chuột Hamster</option>
+                            <option value="6">Thỏ</option>
                         </select>
                     </div>
 
@@ -461,7 +429,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-7 mt-3">
                         <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2"
-                               id="petBreed" value="vàng"/>
+                               id="petBreed"/>
                     </div>
                 </div>
 
@@ -474,7 +442,7 @@
                         <div class="row align-items-center">
                             <div class="col-10">
                                 <input type="number" class="w-100 rounded border-grey bg-white-sub text-start py-1 px-2"
-                                       id="petWeight" min="0" value="12"/>
+                                       id="petWeight" min="0"/>
                             </div>
                             <div class="col-2 px-0">Kg</div>
                         </div>
@@ -495,8 +463,7 @@
                         <label class="txt-bold" for="petChip">Số chip (nếu có):</label>
                     </div>
                     <div class="col-lg-9 col-sm-7">
-                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petChip"
-                               value="1234-5678-4242"/>
+                        <input type="text" class="w-100 rounded border-grey bg-white-sub py-1 px-2" id="petChip"/>
                     </div>
                 </div>
             </div>
@@ -504,15 +471,15 @@
             <div class="w-100"><!-- break --></div>
 
             <div class="col-4 mt-3">
-                <button class="btn btn-pink txt-bold w-100" onclick="hideItem('petDetail')">Hủy</button>
+                <button class="btn btn-pink txt-bold w-100" id="btnCancelPetChange">Hủy</button>
             </div>
 
             <div class="col-4 mt-3">
-                <button class="btn btn-pink-sub border-pink txt-bold w-100" onclick="hideItem('petDetail')">Xóa</button>
+                <button class="btn btn-pink-sub border-pink txt-bold w-100" id="btnDeletePet">Xóa</button>
             </div>
 
             <div class="col-4 mt-3">
-                <button class="btn btn-teal txt-bold w-100" onclick="hideItem('petDetail')">Lưu</button>
+                <button class="btn btn-teal txt-bold w-100" id="btnUpdatePet">Lưu</button>
             </div>
 
         </div>
@@ -587,6 +554,7 @@
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/ajaxPet.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/bootstrap.esm.js"></script>
 <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
